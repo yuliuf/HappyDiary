@@ -34,25 +34,25 @@ NSInteger alerIndex = 0;
 
 
 @interface YCDiaryViewController ()
-@property (nonatomic, retain) LYDiaryView *diaryView;  //  自定义视图
-@property (nonatomic, retain) lxyDiaryModel *diary; //  普通日记模型
+@property (nonatomic, strong) LYDiaryView *diaryView;  //  自定义视图
+@property (nonatomic, strong) lxyDiaryModel *diary; //  普通日记模型
 @property (nonatomic, assign) BOOL isKeyBoardVisible;  //  键盘是否可见
-@property (nonatomic, retain) NSArray *weatherArray;  // 天气数组
-@property (nonatomic, retain) NSArray *toolArray;   //  工具数组
-@property (nonatomic, retain) LYToolView *toolView;  //  工具选择框
-@property (nonatomic, retain) NSArray *duiqiArray;  //  文本对齐方式
-@property (nonatomic, retain) NSArray *backgroundImage; //  信纸
-@property (nonatomic, retain) NSArray *textColorArray;  //  文本颜色
-@property (nonatomic, retain) NSArray *eventIconArray;  //  事件图标
+@property (nonatomic, strong) NSArray *weatherArray;  // 天气数组
+@property (nonatomic, strong) NSArray *toolArray;   //  工具数组
+@property (nonatomic, strong) LYToolView *toolView;  //  工具选择框
+@property (nonatomic, strong) NSArray *duiqiArray;  //  文本对齐方式
+@property (nonatomic, strong) NSArray *backgroundImage; //  信纸
+@property (nonatomic, strong) NSArray *textColorArray;  //  文本颜色
+@property (nonatomic, strong) NSArray *eventIconArray;  //  事件图标
 
-@property (nonatomic, retain) NSDictionary *textEditDict;   //  文本编辑的字典
-@property (nonatomic, retain) NSDictionary *decoDict;   //  装饰物的字典
-@property (nonatomic, retain) NSDictionary *bgDict;  //  各种背景的字典
+@property (nonatomic, strong) NSDictionary *textEditDict;   //  文本编辑的字典
+@property (nonatomic, strong) NSDictionary *decoDict;   //  装饰物的字典
+@property (nonatomic, strong) NSDictionary *bgDict;  //  各种背景的字典
 
-@property (nonatomic, retain) NSDictionary *dictForTableView;
-@property (nonatomic, retain) UITableView *rightToorBar;
+@property (nonatomic, strong) NSDictionary *dictForTableView;
+@property (nonatomic, strong) UITableView *rightToorBar;
 
-@property (nonatomic, retain) UILongPressGestureRecognizer *longPressGR;//  对tablrView添加长按手势
+@property (nonatomic, strong) UILongPressGestureRecognizer *longPressGR;//  对tablrView添加长按手势
 
 @property (nonatomic, assign) CGPoint beganPoint;
 
@@ -67,14 +67,6 @@ NSInteger alerIndex = 0;
 
 @implementation YCDiaryViewController
 
-- (void)dealloc
-{
-    [_jiepingImageView release];
-    [_finishButton release];
-    [_cancelButton release];
-    
-    [super dealloc];
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -87,7 +79,7 @@ NSInteger alerIndex = 0;
 }
 - (void)loadView
 {
-    self.diaryView = [[[LYDiaryView alloc] initWithFrame:[UIScreen mainScreen].bounds] autorelease];
+    self.diaryView = [[LYDiaryView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.view = self.diaryView;
 }
 
@@ -95,7 +87,7 @@ NSInteger alerIndex = 0;
 {
     [super viewDidLoad];
     
-    self.diary = [[[lxyDiaryModel alloc] init] autorelease];
+    self.diary = [[lxyDiaryModel alloc] init];
     self.diaryView.title.delegate = self;
     
     //  给事件图标赋初值
@@ -112,7 +104,7 @@ NSInteger alerIndex = 0;
     
     //添加截屏所用的图片
     UIImage *img = [UIImage imageNamed:@"kuang.png"];
-    self.jiepingImageView = [[[UIImageView alloc] initWithImage:img] autorelease];
+    self.jiepingImageView = [[UIImageView alloc] initWithImage:img];
     _jiepingImageView.frame = CGRectMake(70, 250, 200, 180);
     _jiepingImageView.hidden = YES;
     [self.view addSubview:_jiepingImageView];
@@ -132,13 +124,12 @@ NSInteger alerIndex = 0;
     [self.view addSubview:_cancelButton];
     
     //  添加topToolView
-    self.toolView = [[[LYToolView alloc] initWithTitle:@"工具" withFrame:Rect(edgeMagin, kMargin, ScreenWidth - 2 *edgeMagin, 80)] autorelease];
+    self.toolView = [[LYToolView alloc] initWithTitle:@"工具" withFrame:Rect(edgeMagin, kMargin, ScreenWidth - 2 *edgeMagin, 80)];
     [self addToolButtons];
     //  topView 关闭按钮添加事件
     [_toolView.closeBtn addTarget:self action:@selector(closeToolView:) forControlEvents:UIControlEventTouchUpInside];
     self.toolView.alpha = 0.f;
     [self.diaryView addSubview:_toolView];
-    [_toolView release];
     
     // 工具按钮事件
     [self.diaryView.toolButton addTarget:self action:@selector(toolButtonAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -181,7 +172,6 @@ NSInteger alerIndex = 0;
 {
     lxyEventViewController *eventVC = [[lxyEventViewController alloc] init];
     [self presentViewController:eventVC animated:YES completion:nil];
-    [eventVC release];
 }
 #pragma mark 保存按钮事件
 - (void)saveButtonAction:(UIButton *)sender
@@ -191,12 +181,10 @@ NSInteger alerIndex = 0;
     if (arr.count == 0) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您还没在信纸上添加东西!" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
         [alertView show];
-        [alertView release];
 
     } else if ([self.diaryView.title.text isEqualToString:@""]) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您还未输入标题!" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
         [alertView show];
-        [alertView release];
         
     }
     
@@ -252,7 +240,6 @@ NSInteger alerIndex = 0;
             
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"提示" message:@"保存成功！" delegate:self cancelButtonTitle:nil otherButtonTitles:@"确定", nil];
             [alertView show];
-            [alertView release];
             
             //调用清屏按钮的方法
             for (UIView *view in self.diaryView.xinzhi.subviews) {
@@ -660,7 +647,7 @@ NSInteger alerIndex = 0;
     NSString *cell_id = @"cell_id";
     LYCustomCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_id];
     if (cell == nil) {
-        cell = [[[LYCustomCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cell_id] autorelease];
+        cell = [[LYCustomCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cell_id];
     }
     NSString *key = [_dictForTableView allKeys][0];
     NSArray *array = _dictForTableView[key];
@@ -709,7 +696,6 @@ NSInteger alerIndex = 0;
                     } else {
                         UIAlertView *aler = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请选择要编辑的文本框来修改字体" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
                         [aler show];
-                        [aler release];
                     }
                     
                 }
@@ -724,12 +710,10 @@ NSInteger alerIndex = 0;
             if (III == 0) {
                 UIAlertView *aler = [[UIAlertView alloc] initWithTitle:@"提示" message:@"对不起，该页面上还没有东西呢" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
                 [aler show];
-                [aler release];
             } else {
 
             UIAlertView *aler = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请选择要编辑的文本框来修改字体" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
             [aler show];
-            [aler release];
             }
         } else {
             for (UIView *VIEW in arr) {
@@ -739,7 +723,6 @@ NSInteger alerIndex = 0;
                 } else {
                     UIAlertView *aler = [[UIAlertView alloc] initWithTitle:@"提示" message:@"对不起，您选中的文本框没有文字！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
                     [aler show];
-                    [aler release];
 
                 }
             }
@@ -767,7 +750,6 @@ NSInteger alerIndex = 0;
             } else {
                 UIAlertView *aler = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请选择要编辑的文本框来修改文字的颜色" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
                 [aler show];
-                [aler release];
             }
             
             III ++;
@@ -780,12 +762,10 @@ NSInteger alerIndex = 0;
             if (III == 0) {
                 UIAlertView *aler = [[UIAlertView alloc] initWithTitle:@"提示" message:@"对不起，该页面上还没有东西呢" delegate:self cancelButtonTitle:@"ok" otherButtonTitles: nil];
                 [aler show];
-                [aler release];
             } else {
                 
                 UIAlertView *aler = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请选择要编辑的文本框来修改文字的颜色" delegate:self cancelButtonTitle:@"ok" otherButtonTitles: nil];
                 [aler show];
-                [aler release];
             }
         } else {
             for (UIView *VIEW in arr) {
@@ -796,7 +776,6 @@ NSInteger alerIndex = 0;
                 } else {
                     UIAlertView *aler = [[UIAlertView alloc] initWithTitle:@"提示" message:@"对不起，您选中的文本框没有文字！" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
                     [aler show];
-                    [aler release];
                     
                 }
 
@@ -808,7 +787,6 @@ NSInteger alerIndex = 0;
     if ([key isEqualToString:@"background"]) {
         UIImage *image = [[UIImage alloc] initWithContentsOfFile:imagePath];
         self.diaryView.xinzhi.image = image;
-        [image release];
     }
     
     if ([key isEqualToString:@"eventIcon"]) {
@@ -874,9 +852,7 @@ NSInteger alerIndex = 0;
             [view1 setFrame:Rect(100, 100, 50, 50)];
             view1.contentMode = UIViewContentModeScaleAspectFit;
             view1.image = image;
-            [image release];
             [self.diaryView.xinzhi addSubview:view1];
-            [view1 release];
         }
         
         if ([key isEqualToString:@"textFieldStyle"]) {
@@ -886,7 +862,6 @@ NSInteger alerIndex = 0;
             textField.image = image;
 //            [image release];
             [self.diaryView.xinzhi addSubview:textField];
-            [textField release];
             
         }
 #warning 修改2
@@ -915,7 +890,6 @@ NSInteger alerIndex = 0;
         if (0 == alerIndex) {
             UIAlertView *aler = [[UIAlertView alloc] initWithTitle:@"提示" message:@"输入长度不能超过30个字符" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
             [aler show];
-            [aler release];
         }
         alerIndex ++;
         return NO;
@@ -947,7 +921,7 @@ NSInteger alerIndex = 0;
 #pragma mark 弹出涂鸦视图
 - (void)showTuyaView
 {
-    self.tuyaView = [[[LYTuyaView alloc] initWithFrame:CGRectMake(11, 36, self.diaryView.xinzhi.frame.size.width - 22, self.diaryView.xinzhi.frame.size.height - 70)] autorelease];
+    self.tuyaView = [[LYTuyaView alloc] initWithFrame:CGRectMake(11, 36, self.diaryView.xinzhi.frame.size.width - 22, self.diaryView.xinzhi.frame.size.height - 70)];
     _tuyaView.backgroundColor = [UIColor orangeColor];
     _tuyaView.backgroundColor = [UIColor clearColor];
     _tuyaView.layer.borderColor = [[UIColor redColor] CGColor];
@@ -1049,12 +1023,10 @@ NSInteger alerIndex = 0;
         picker.sourceType = UIImagePickerControllerSourceTypeCamera;
         
         [self presentViewController:picker animated:YES completion:nil];
-        [picker release];
     } else {
         //如果没有的话要提示用户
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"警告" message:@"没有照相机" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
         [alert show];
-        [alert release];
     }
 }
 //调用图库方法
@@ -1069,11 +1041,9 @@ NSInteger alerIndex = 0;
         //打开相册选择图片
         picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         [self presentViewController:picker animated:YES completion:nil];
-        [picker release];
     } else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"警告" message:@"没有相册" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
         [alert show];
-        [alert release];
     }
 }
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
@@ -1105,7 +1075,6 @@ NSInteger alerIndex = 0;
     photoImageView.image = image;
     photoImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self.diaryView.xinzhi addSubview:photoImageView];
-    [photoImageView release];
 }
 
 //调用截屏方法
@@ -1145,7 +1114,6 @@ NSInteger alerIndex = 0;
     
     UIAlertView *aler = [[UIAlertView alloc] initWithTitle:@"添加成功" message:@"图片已存到相册" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
     [aler show];
-    [aler release];
 }
 //截屏上cancel按钮的监听方法
 - (void)cancelButtonAction:(UIButton *)sender

@@ -10,11 +10,11 @@
 
 @interface lxyWeeklyCell : UICollectionViewCell
 
-@property (nonatomic , retain) UIImageView *titleIcon;
-@property (nonatomic , retain) UILabel *titleLabel;
-@property (nonatomic , retain) UILabel *titleDay;
+@property (nonatomic , strong) UIImageView *titleIcon;
+@property (nonatomic , strong) UILabel *titleLabel;
+@property (nonatomic , strong) UILabel *titleDay;
 
-@property (nonatomic , retain) UIImageView *contentImageView;
+@property (nonatomic , strong) UIImageView *contentImageView;
 
 
 

@@ -10,15 +10,6 @@
 
 @implementation lxyDiaryModel
 
-- (void)dealloc
-{
-    [_diary_content release];
-    [_diary_icon release];
-    [_diary_time release];
-    [_diary_title release];
-    
-    [super dealloc];
-}
 
 - (instancetype)initWithID:(NSInteger)ID
                    andIcon:(NSString *)icon

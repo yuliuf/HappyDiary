@@ -23,24 +23,24 @@
 
 @interface lxyMonthlyView : UIView
 
-@property (nonatomic , retain) UIButton *monthlyButton2;
+@property (nonatomic , strong) UIButton *monthlyButton2;
 
-@property (nonatomic , retain) UIButton *weeklyButton1;
+@property (nonatomic , strong) UIButton *weeklyButton1;
 
-@property (nonatomic , retain) UIButton *dailyButton1;
+@property (nonatomic , strong) UIButton *dailyButton1;
 
-@property (nonatomic , retain) UIButton *personDataButton1;
+@property (nonatomic , strong) UIButton *personDataButton1;
 
-@property (nonatomic , retain) UIImageView *imageView;
+@property (nonatomic , strong) UIImageView *imageView;
 
-@property (nonatomic , retain) UIImageView *imageViewTitle;
+@property (nonatomic , strong) UIImageView *imageViewTitle;
 
-@property (nonatomic , retain) UIScrollView *scroller;
+@property (nonatomic , strong) UIScrollView *scroller;
 
 
-@property (nonatomic, retain) UIButton *previousButton;
-@property (nonatomic, retain) UIButton *nextButton;
+@property (nonatomic, strong) UIButton *previousButton;
+@property (nonatomic, strong) UIButton *nextButton;
 
-@property (nonatomic , retain) UIButton *monthlyBackButton; //返回按钮
+@property (nonatomic , strong) UIButton *monthlyBackButton; //返回按钮
 
 @end

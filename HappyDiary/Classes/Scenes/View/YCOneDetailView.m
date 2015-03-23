@@ -24,14 +24,12 @@
     //  设置背景图
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"deco_sticker_mygom13" ofType:@"png"];
     UIImage *image = [[UIImage alloc] initWithContentsOfFile:imagePath];
-    self.bgImageView = [[[UIImageView alloc] initWithImage:image] autorelease];
+    self.bgImageView = [[UIImageView alloc] initWithImage:image];
     _bgImageView.frame = Rect(15, 80, ScreenWidth - 30, 100);
     _bgImageView.contentMode = UIViewContentModeScaleAspectFit;
-    [image release];
     [self addSubview:_bgImageView];
-    [_bgImageView release];
     
-    self.textView = [[[UITextView alloc] initWithFrame:Rect(MinX(_bgImageView.frame), MaxY(_bgImageView.frame), Width(_bgImageView.frame), ScreenHeight - 200)] autorelease];
+    self.textView = [[UITextView alloc] initWithFrame:Rect(MinX(_bgImageView.frame), MaxY(_bgImageView.frame), Width(_bgImageView.frame), ScreenHeight - 200)];
     self.textView.font = [UIFont fontWithName:@"LiDeBiao-Xing-3.0" size:19.f];
     self.textView.backgroundColor = UIColorFromRGB(0xFFAA33);
     //    self.textView.layer.borderWidth = 1.f;

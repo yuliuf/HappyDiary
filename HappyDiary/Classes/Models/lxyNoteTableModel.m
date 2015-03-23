@@ -10,15 +10,6 @@
 
 @implementation lxyNoteTableModel
 
--(void)dealloc
-{
-    [_note_content release];
-    [_note_icon release];
-    [_note_image release];
-    [_note_time release];
-    
-    [super dealloc];
-}
 
 - (instancetype)initWithNoteID:(NSInteger)noteID
                 andHourglassID:(NSInteger)hourglassID

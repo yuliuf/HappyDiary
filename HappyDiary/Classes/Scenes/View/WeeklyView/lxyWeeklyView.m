@@ -28,21 +28,6 @@ static NSString *calendarCell = @"calendarCell";
 
 @implementation lxyWeeklyView
 
-- (void)dealloc
-{
-    [_monthlyButton1 release];
-    [_weeklyButton2 release];
-    [_dailyButton1 release];
-    [_personDataButton1 release];
-    [_imageView release];
-    [_imageViewTitle release];
-    [_collection release];
-    [_layout release];
-    [_commonCell release];
-    [_swipGesture release];
-    
-    [super dealloc];
-}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -60,7 +45,7 @@ static NSString *calendarCell = @"calendarCell";
 - (UISwipeGestureRecognizer *)swipGesture
 {
     if (nil == _swipGesture) {
-        self.swipGesture = [[[UISwipeGestureRecognizer alloc] init] autorelease];
+        self.swipGesture = [[UISwipeGestureRecognizer alloc] init];
         [self addGestureRecognizer:_swipGesture];
     }
     return _swipGesture;
@@ -88,13 +73,13 @@ static NSString *calendarCell = @"calendarCell";
     
     //添加背景图片
     UIImage *img = [UIImage imageNamed:@"eventBackGround.png"];
-    self.imageView = [[[UIImageView alloc] initWithImage:img] autorelease];
+    self.imageView = [[UIImageView alloc] initWithImage:img];
     _imageView.userInteractionEnabled = YES;
     _imageView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
     [self addSubview:_imageView];
     
     UIImage *imgTitle = [UIImage imageNamed:@"eventControllerTitle.png"];
-    self.imageViewTitle = [[[UIImageView alloc] initWithImage:imgTitle] autorelease];
+    self.imageViewTitle = [[UIImageView alloc] initWithImage:imgTitle];
     _imageViewTitle.userInteractionEnabled = YES;
     _imageViewTitle.frame = CGRectMake(0, 0, self.frame.size.width, 54);
     [self addSubview:_imageViewTitle];
@@ -107,17 +92,17 @@ static NSString *calendarCell = @"calendarCell";
     [_imageViewTitle addSubview:_personDataButton1];
     
     //初始化layout
-    self.layout = [[[UICollectionViewFlowLayout alloc] init] autorelease];
+    self.layout = [[UICollectionViewFlowLayout alloc] init];
     _layout.itemSize = CGSizeMake(77.8, 135.3);
     
     //初始化collectionView
-    self.collection = [[[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:_layout] autorelease];
+    self.collection = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:_layout];
     _collection.frame = CGRectMake(40, 41, 253.5, 419.5);
     
     
     //给collectionView加背景view
     UIImage *collecImage = [UIImage imageNamed:@"weeklyBtn.png"];
-    UIImageView *collecImageView = [[[UIImageView alloc] initWithImage:collecImage] autorelease];
+    UIImageView *collecImageView = [[UIImageView alloc] initWithImage:collecImage];
     _collection.backgroundView = collecImageView;
     
     
@@ -145,7 +130,7 @@ static NSString *calendarCell = @"calendarCell";
     
     NSMutableArray *arr = [NSMutableArray array];
     
-    NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSString *today = [formatter stringFromDate:[NSDate date]];
     today = [today substringWithRange:NSMakeRange(8, 2)];
@@ -171,7 +156,7 @@ static NSString *calendarCell = @"calendarCell";
     if (indexPath.row == 0) {
         lxyCalendarCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cell_id forIndexPath:indexPath];
         if (nil == cell) {
-            cell = [[[lxyCalendarCell alloc] init] autorelease];
+            cell = [[lxyCalendarCell alloc] init];
         }
         dtForMonth = [NSDate date];
         UIView *calendarView = [self createCalendar];
@@ -188,7 +173,7 @@ static NSString *calendarCell = @"calendarCell";
         //取出当前所要显示的model
         lxyWeeklyCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cell_id forIndexPath:indexPath];
         if (nil == cell) {
-            cell = [[[lxyWeeklyCell alloc] init] autorelease];
+            cell = [[lxyWeeklyCell alloc] init];
         }
         
         //取出所有是今天的数据
@@ -201,7 +186,7 @@ static NSString *calendarCell = @"calendarCell";
 //            NSLog(@"%@", day);
 //        }];
         
-        NSDateFormatter *formatter = [[[NSDateFormatter alloc] init] autorelease];
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
         [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
         NSString *day = [formatter stringFromDate:[NSDate date]];
         day = [day substringWithRange:NSMakeRange(8, 2)];
@@ -235,10 +220,8 @@ static NSString *calendarCell = @"calendarCell";
         
         cell.titleLabel.text = model.diary_title;
         cell.titleIcon.image = titleImage;
-        [titleImage release];
         cell.titleDay.text = time;
         cell.contentImageView.image = image;
-        [image release];
 
         return cell;
     }
@@ -253,7 +236,7 @@ static NSString *calendarCell = @"calendarCell";
     {
         [[self viewWithTag:1001] removeFromSuperview];
     }
-    UIView *viewTmp = [[[UIView alloc] initWithFrame:CGRectMake(40, 41, 77.8, 135.3)] autorelease];
+    UIView *viewTmp = [[UIView alloc] initWithFrame:CGRectMake(40, 41, 77.8, 135.3)];
     
     //viewTmp.backgroundColor = [UIColor blackColor];
     viewTmp.tag=1001;
@@ -267,7 +250,7 @@ static NSString *calendarCell = @"calendarCell";
     NSInteger day = [components day];
 
     //  显示月份
-    NSDateFormatter *dt = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *dt = [[NSDateFormatter alloc] init];
     NSString *strMonthName = [[dt monthSymbols] objectAtIndex:month-1];//January,Febryary,March etc...
     strMonthName = [ strMonthName stringByAppendingString:[NSString  stringWithFormat:@"- %d",year]];
     
@@ -276,7 +259,7 @@ static NSString *calendarCell = @"calendarCell";
     //  日历的Y坐标
     originY = 80;
     
-    YCSmallCalendarView  *vwCal = [[[YCSmallCalendarView alloc] initWithFrame:CGRectMake(1.5, 3, 77.8,127)] autorelease];
+    YCSmallCalendarView  *vwCal = [[YCSmallCalendarView alloc] initWithFrame:CGRectMake(1.5, 3, 77.8,127)];
     X++;
     vwCal.tag = 100;
     vwCal.layer.masksToBounds = NO;

@@ -12,9 +12,9 @@
 
 @interface YCDiaryViewController : LYBaseViewController
 
-@property (nonatomic , retain) UIImageView *jiepingImageView;
-@property (nonatomic , retain) UIButton *finishButton;
-@property (nonatomic , retain) UIButton *cancelButton;
+@property (nonatomic , strong) UIImageView *jiepingImageView;
+@property (nonatomic , strong) UIButton *finishButton;
+@property (nonatomic , strong) UIButton *cancelButton;
 
 
 @property (nonatomic , assign) CGPoint beginPoint;
@@ -37,9 +37,9 @@
 
 @property (nonatomic , assign) CGRect frame;
 
-@property (nonatomic , retain) LYTuyaBan *tuyaBan;  //刘玉涂鸦板
+@property (nonatomic , strong) LYTuyaBan *tuyaBan;  //刘玉涂鸦板
 
-@property (nonatomic , retain) LYTuyaView *tuyaView;    //刘玉涂鸦view
+@property (nonatomic , strong) LYTuyaView *tuyaView;    //刘玉涂鸦view
 
 
 

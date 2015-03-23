@@ -10,14 +10,14 @@
 
 @interface YCDetailHourglassView : UIView
 
-@property (nonatomic, retain) UITableView *tableView;
-@property (nonatomic, retain) UILabel *introduceLabel;
-@property (nonatomic, retain) UIImageView *hgStyleImageView;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UILabel *introduceLabel;
+@property (nonatomic, strong) UIImageView *hgStyleImageView;
 
-@property (nonatomic, retain) UIImageView *backImageView;
+@property (nonatomic, strong) UIImageView *backImageView;
 
 
-@property (nonatomic, retain) UIButton *voice;
-@property (nonatomic, retain) UIButton *playButton;
+@property (nonatomic, strong) UIButton *voice;
+@property (nonatomic, strong) UIButton *playButton;
 
 @end

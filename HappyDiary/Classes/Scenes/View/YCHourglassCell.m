@@ -10,12 +10,6 @@
 
 @implementation YCHourglassCell
 
-- (void)dealloc
-{
-    [_imageView release];
-    [_label release];
-    [super dealloc];
-}
 
 - (id)initWithFrame:(CGRect)frame
 {

@@ -10,7 +10,7 @@
 
 @interface LYButtonImageView : UIImageView
 
-@property (nonatomic, retain)UILabel *content;
+@property (nonatomic, strong)UILabel *content;
 @property (nonatomic, assign)NSInteger tag;
 - (void)addTarget:(id)target
            action:(SEL)action

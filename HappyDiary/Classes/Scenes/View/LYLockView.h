@@ -11,10 +11,10 @@
 
 
 @interface LYLockView : UIView
-@property (nonatomic, retain)UIImageView *backgroundImageView;
-@property (nonatomic, retain)LYButtonImageView *lockImageView;
-@property (nonatomic, retain)UITextField *pwdTextField;
-@property (nonatomic, retain)UILabel *alertLabel;
-@property (nonatomic, assign)UITapGestureRecognizer *tap;
+@property (nonatomic, strong)UIImageView *backgroundImageView;
+@property (nonatomic, strong)LYButtonImageView *lockImageView;
+@property (nonatomic, strong)UITextField *pwdTextField;
+@property (nonatomic, strong)UILabel *alertLabel;
+@property (nonatomic, strong)UITapGestureRecognizer *tap;
 
 @end

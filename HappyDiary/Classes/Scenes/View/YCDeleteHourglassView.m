@@ -21,14 +21,14 @@
 
 - (void)addAllViews
 {
-    self.noticeLabel = [[[UILabel alloc] initWithFrame:CGRectMake(25, 20, 140, 30)] autorelease];
+    self.noticeLabel = [[UILabel alloc] initWithFrame:CGRectMake(25, 20, 140, 30)];
     _noticeLabel.text = @"确定要删除吗";
     _noticeLabel.font = [UIFont fontWithName:@"LiDeBiao-Xing-3.0" size:20.f];
     _noticeLabel.textColor = UIColorFromRGB(0xAA7700);
     _noticeLabel.textAlignment = NSTextAlignmentCenter;
     [self addSubview:_noticeLabel];
     
-    self.nameTextField = [[[UITextField alloc] initWithFrame:CGRectMake(25, 60, 140, 30)] autorelease];
+    self.nameTextField = [[UITextField alloc] initWithFrame:CGRectMake(25, 60, 140, 30)];
     _nameTextField.textAlignment = NSTextAlignmentCenter;
     _nameTextField.borderStyle = UITextBorderStyleRoundedRect;
     _nameTextField.placeholder = @"输入沙漏名字";

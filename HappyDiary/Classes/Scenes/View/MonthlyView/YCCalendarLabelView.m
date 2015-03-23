@@ -10,31 +10,24 @@
 
 @implementation YCCalendarLabelView
 
-- (void)dealloc
-{
-    [_imageViewCell release];
-    [_labelCell release];
-    [_label release];
-    [super dealloc];
-}
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         //  label
-        self.label = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)] autorelease];
+        self.label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
         [self addSubview:_label];
 //        [_label release];
         
         //  labelCell加载到label上
-        self.labelCell = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width / 5 * 2, frame.size.height / 2)] autorelease];
+        self.labelCell = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, frame.size.width / 5 * 2, frame.size.height / 2)];
         _labelCell.textAlignment = NSTextAlignmentRight;
         [self.label addSubview:_labelCell];
 //        [_labelCell release];
         
         //  imageViewCell加载到label上
-        self.imageViewCell = [[[UIImageView alloc] initWithFrame:CGRectMake(frame.size.width / 5 * 2, 0, frame.size.width / 5 * 3, frame.size.height)] autorelease];
+        self.imageViewCell = [[UIImageView alloc] initWithFrame:CGRectMake(frame.size.width / 5 * 2, 0, frame.size.width / 5 * 3, frame.size.height)];
         [self.label addSubview:_imageViewCell];
 //        [_imageViewCell release];
     }

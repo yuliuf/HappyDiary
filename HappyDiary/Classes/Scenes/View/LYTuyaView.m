@@ -10,12 +10,6 @@
 
 @implementation LYTuyaView
 
-- (void)dealloc
-{
-    [_lineArray release];
-    
-    [super dealloc];
-}
 
 - (id)initWithFrame:(CGRect)frame
 {

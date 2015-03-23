@@ -41,12 +41,12 @@
 
 - (void)addAllViews
 {
-    self.backImageView = [[[UIImageView alloc] initWithFrame:self.bounds] autorelease];
+    self.backImageView = [[UIImageView alloc] initWithFrame:self.bounds];
     self.backImageView.image = [UIImage imageNamed:@"blueSky"];
     [self addSubview:_backImageView];
 //    [_backImageView release];
     
-    self.headerLable = [[[UILabel alloc] initWithFrame:CGRectMake(0, 10, 320, 30)] autorelease];
+    self.headerLable = [[UILabel alloc] initWithFrame:CGRectMake(0, 10, 320, 30)];
     self.headerLable.textColor = [UIColor grayColor];
     self.headerLable.font = [UIFont fontWithName:@"LiDeBiao-Xing-3.0" size:22.f];
     self.headerLable.textAlignment = NSTextAlignmentCenter;
@@ -54,25 +54,25 @@
     [self addSubview:_headerLable];
     
     NSArray *itemsArray = [NSArray arrayWithObjects:@"1", @"2", @"3", @"4", nil];
-    self.segment = [[[UISegmentedControl alloc] initWithItems:itemsArray] autorelease];
+    self.segment = [[UISegmentedControl alloc] initWithItems:itemsArray];
     self.segment.selectedSegmentIndex = 0;
     self.segment.tintColor = UIColorFromRGB(0xFF8800);
     self.segment.frame = CGRectMake(50, 50, 220, 30);
     [self addSubview:_segment];
     
-    self.imageView = [[[UIImageView alloc] initWithFrame:CGRectMake(50, 95, 220, 120)] autorelease];
+    self.imageView = [[UIImageView alloc] initWithFrame:CGRectMake(50, 95, 220, 120)];
     self.imageView.image = [UIImage imageNamed:@"shalou5"];
     self.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [self addSubview:_imageView];
     
-    self.label = [[[UILabel alloc] initWithFrame:CGRectMake(50, 230, 65, 30)] autorelease];
+    self.label = [[UILabel alloc] initWithFrame:CGRectMake(50, 230, 65, 30)];
     _label.text = @"名字:";
     _label.font = [UIFont fontWithName:@"LiDeBiao-Xing-3.0" size:20.f];
     _label.textColor = [UIColor grayColor];
 //    _label.textColor = [UIColor blackColor];
     [self addSubview:_label];
     
-    self.textField = [[[UITextField alloc] initWithFrame:CGRectMake(120, 230, 130, 30)] autorelease];
+    self.textField = [[UITextField alloc] initWithFrame:CGRectMake(120, 230, 130, 30)];
     _textField.borderStyle = UITextBorderStyleRoundedRect;
     _textField.layer.borderWidth = 0.5f;
     _textField.layer.cornerRadius = 5.f;
@@ -81,7 +81,7 @@
     _textField.textColor = [UIColor blackColor];
     [self addSubview:_textField];
     
-    self.textView = [[[UITextView alloc] initWithFrame:CGRectMake(50, 280, 220, 120)] autorelease];
+    self.textView = [[UITextView alloc] initWithFrame:CGRectMake(50, 280, 220, 120)];
     self.textView.layer.borderWidth = .5f;
     self.textView.text = @"还没有输入简介..";
     self.textView.font = [UIFont fontWithName:@"LiDeBiao-Xing-3.0" size:17.f];
@@ -126,13 +126,12 @@
     [_playButton setBackgroundImage:[UIImage imageNamed:@"pause"] forState:UIControlStateNormal];
     [self addSubview:_playButton];
     
-    self.volumeSlider = [[[UISlider alloc] initWithFrame:CGRectMake(40, MaxY(self.textView.frame) + y / 2 - 14, 240, 30)] autorelease];
+    self.volumeSlider = [[UISlider alloc] initWithFrame:CGRectMake(40, MaxY(self.textView.frame) + y / 2 - 14, 240, 30)];
     self.volumeSlider.value = 0.8;
     self.volumeSlider.minimumValue = 0;
     self.volumeSlider.maximumValue = 1;
     [self.volumeSlider setThumbImage:[UIImage imageNamed:@"sliderThumb"] forState:UIControlStateNormal];
     [self addSubview:_volumeSlider];
-    [_volumeSlider release];
     
     self.voice = [UIButton buttonWithType:UIButtonTypeSystem];
     self.voice.frame = CGRectMake(8, MaxY(self.textView.frame) + y / 2 - 14, 32, 32);

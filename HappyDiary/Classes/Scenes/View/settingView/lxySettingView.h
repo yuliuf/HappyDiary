@@ -10,28 +10,28 @@
 
 @interface lxySettingView : UIView
 
-@property (nonatomic , retain) UISwitch *pwdSwitch;         //密码开关switch
+@property (nonatomic , strong) UISwitch *pwdSwitch;         //密码开关switch
 //@property (nonatomic, retain) UIButton *pwdButton;
 
-@property (nonatomic , retain) UILabel *versionsLabel;           //版本label
-@property (nonatomic , retain) UILabel *pwdLabel;                //密码label
-@property (nonatomic , retain) UILabel *backupLabel;            //备份label
+@property (nonatomic , strong) UILabel *versionsLabel;           //版本label
+@property (nonatomic , strong) UILabel *pwdLabel;                //密码label
+@property (nonatomic , strong) UILabel *backupLabel;            //备份label
 
-@property (nonatomic , retain) UIButton *alertPwdBtn;           //修改密码button
+@property (nonatomic , strong) UIButton *alertPwdBtn;           //修改密码button
 //@property (nonatomic , retain) UIButton *setPwdBtn;             //设置密码button
-@property (nonatomic , retain) UIButton *backUpBtn;             //备份button
+@property (nonatomic , strong) UIButton *backUpBtn;             //备份button
 
-@property (nonatomic , retain) UIImageView *mimaImageView;
+@property (nonatomic , strong) UIImageView *mimaImageView;
 
-@property (nonatomic , assign) UITapGestureRecognizer *tap;     //添加轻怕的监听手势
+@property (nonatomic , strong) UITapGestureRecognizer *tap;     //添加轻怕的监听手势
 
-@property (nonatomic , retain) UIImageView *xiaoxiongImageView; //旁边的小熊图片
+@property (nonatomic , strong) UIImageView *xiaoxiongImageView; //旁边的小熊图片
 
-@property (nonatomic , retain) UIImageView *backImgView;        //背景图片
+@property (nonatomic , strong) UIImageView *backImgView;        //背景图片
 
 
-@property (nonatomic, retain) UILabel *aboutLable;
-@property (nonatomic, retain) UITextView *aboutTextView;
-@property (nonatomic, retain) UIButton *aboutButton;
+@property (nonatomic, strong) UILabel *aboutLable;
+@property (nonatomic, strong) UITextView *aboutTextView;
+@property (nonatomic, strong) UIButton *aboutButton;
 
 @end

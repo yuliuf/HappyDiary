@@ -11,13 +11,13 @@
 @interface lxyUserTableModel : NSObject
 
 @property (nonatomic , assign) NSInteger user_id;
-@property (nonatomic , retain) NSString *user_name;
-@property (nonatomic , retain) NSString *user_pwd;
-@property (nonatomic , retain) NSString *user_birthday;
-@property (nonatomic , retain) NSString *user_headerImage;
-@property (nonatomic , retain) NSString *user_introduce;
-@property (nonatomic , retain) NSString *user_photo1;
-@property (nonatomic, retain) NSString *user_photo2;
+@property (nonatomic , strong) NSString *user_name;
+@property (nonatomic , strong) NSString *user_pwd;
+@property (nonatomic , strong) NSString *user_birthday;
+@property (nonatomic , strong) NSString *user_headerImage;
+@property (nonatomic , strong) NSString *user_introduce;
+@property (nonatomic , strong) NSString *user_photo1;
+@property (nonatomic, strong) NSString *user_photo2;
 
 
 - (instancetype)initWithID:(NSInteger)ID

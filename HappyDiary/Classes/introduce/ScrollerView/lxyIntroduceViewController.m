@@ -16,12 +16,6 @@
 
 @implementation lxyIntroduceViewController
 
-- (void)dealloc
-{
-    [_introduceView release];
-    
-    [super dealloc];
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,7 +28,7 @@
 
 - (void)loadView
 {
-    self.introduceView = [[[lxyIntroduce alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.introduceView = [[lxyIntroduce alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.view = _introduceView;
 }
 
@@ -59,7 +53,6 @@
     rootVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
     
     [self presentViewController:rootVC animated:YES completion:nil];
-    [rootVC release];
 }
 
 - (void)didReceiveMemoryWarning

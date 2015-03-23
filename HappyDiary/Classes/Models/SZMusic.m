@@ -10,12 +10,6 @@
 
 @implementation SZMusic
 
-- (void)dealloc
-{
-    [_name release];
-    [_type release];
-    [super dealloc];
-}
 
 - (id)initWithName:(NSString *)name type:(NSString *)type
 {

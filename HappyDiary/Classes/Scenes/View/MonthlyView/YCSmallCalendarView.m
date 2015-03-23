@@ -36,7 +36,7 @@
 - (YCSmallCalendarView *)createCalOfDay:(int)currentDay Month:(int)currentMonth Year:(int)currentYear MonthName:(NSString *)name
 {
     //  创建日历对象
-    NSCalendar *gregorian = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     
     //  划分时区Time Zone： GMT，UTC，DST，CST
     [gregorian setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
@@ -51,7 +51,7 @@
     NSDate *add1DayDate = firstDayOfMonthDate;
     NSRange range = [gregorian rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:[gregorian dateFromComponents:comps]];
     
-    NSCalendar *cal1 = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
+    NSCalendar *cal1 = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *comps1 = [cal1 components:NSWeekdayCalendarUnit fromDate:firstDayOfMonthDate];
     
     // 1 for mon 8 for sun
@@ -60,7 +60,7 @@
     int y = 75;
     
     //  月和年
-    UILabel *lblMonthName = [[[UILabel alloc] initWithFrame:CGRectMake(0, 0, 77.8, 22)] autorelease];
+    UILabel *lblMonthName = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 77.8, 22)];
     lblMonthName.backgroundColor = [UIColor clearColor];
     lblMonthName.alpha = 0.2;
     lblMonthName.tag = 1999;
@@ -263,7 +263,7 @@
 {
     // NSLog(@"currentDate %@",currentDate);
     NSDate *dtToday = [NSDate date];
-    NSDateFormatter *dtFormatter = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *dtFormatter = [[NSDateFormatter alloc] init];
     
     [dtFormatter setDateFormat:@"yyyy"];
     int CurrentYear = [[dtFormatter stringFromDate:currentDate]integerValue];

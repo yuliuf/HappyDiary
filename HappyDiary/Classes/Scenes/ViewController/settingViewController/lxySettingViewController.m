@@ -35,9 +35,9 @@
 }
 
 
-@property (nonatomic, retain)UILabel *originPwdLbl;
-@property (nonatomic, retain)UITextField *originPwd;
-@property (nonatomic, retain)UIButton *originPwdOkButton;
+@property (nonatomic, strong)UILabel *originPwdLbl;
+@property (nonatomic, strong)UITextField *originPwd;
+@property (nonatomic, strong)UIButton *originPwdOkButton;
 @end
 
 NSInteger switchIndex = 0;
@@ -45,20 +45,6 @@ NSInteger flag = 0;
 
 @implementation lxySettingViewController
 
-- (void)dealloc
-{
-    [_stView release];
-    [_oldPwdLabel release];
-    [_oldPwdText release];
-    [_newPwdLabel release];
-    [_newPwdText release];
-    [_concelBtn release];
-    [_concelBtn release];
-    [_alertPwdView release];
-    [_setPwdView release];
-    
-    [super dealloc];
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -71,7 +57,7 @@ NSInteger flag = 0;
 
 - (void)loadView
 {
-    self.stView = [[[lxySettingView alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.stView = [[lxySettingView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.view = _stView;
 }
 
@@ -108,7 +94,7 @@ NSInteger flag = 0;
 #pragma mark - 新手指引
 - (void)aboutButtonAction:(UIButton *)sender
 {
-    lxyIntroduceViewController *introduceVC = [[[lxyIntroduceViewController alloc] init] autorelease];
+    lxyIntroduceViewController *introduceVC = [[lxyIntroduceViewController alloc] init];
     [self presentViewController:introduceVC animated:YES completion:nil];
 }
 
@@ -168,7 +154,7 @@ NSInteger flag = 0;
 - (void)tapAction:(UITapGestureRecognizer *)sender
 {
     [_oldPwdText resignFirstResponder];
-    [_newPwdText resignFirstResponder];
+//    [_newPwdField resignFirstResponder];
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:.5];
     if (1 == i) {
@@ -185,7 +171,7 @@ NSInteger flag = 0;
 - (UILabel *)createLabelWithName:(NSString *)name
                         andFrame:(CGRect)frame
 {
-    UILabel *label = [[[UILabel alloc] initWithFrame:frame] autorelease];
+    UILabel *label = [[UILabel alloc] initWithFrame:frame];
     label.text = name;
     label.font = [UIFont fontWithName:@"LiDeBiao-Xing-3.0" size:17.f];
     return label;
@@ -196,7 +182,7 @@ NSInteger flag = 0;
 - (UITextField *)createTextFieldWithName:(NSString *)name
                                 andFrame:(CGRect)frame
 {
-    UITextField *text = [[[UITextField alloc] initWithFrame:frame] autorelease];
+    UITextField *text = [[UITextField alloc] initWithFrame:frame];
     text.placeholder = name;
     text.borderStyle = UITextBorderStyleRoundedRect;
     text.font = [UIFont fontWithName:@"LiDeBiao-Xing-3.0" size:17.f];
@@ -219,12 +205,12 @@ NSInteger flag = 0;
 //创建修改密码的view
 - (UIView *)createAlerPwdView
 {
-    self.alertPwdView = [[[UIView alloc] initWithFrame:CGRectMake(50, 173, 280, 180)] autorelease];
+    self.alertPwdView = [[UIView alloc] initWithFrame:CGRectMake(50, 173, 280, 180)];
     _alertPwdView.tag = alerViewTag;
     
     
-    UIImage *img = [[[UIImage alloc] init] autorelease];
-    UIImageView *imgView = [[[UIImageView alloc] initWithImage:img] autorelease];
+    UIImage *img = [[UIImage alloc] init];
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
     imgView.frame = CGRectMake(30, 0, _alertPwdView.frame.size.width - 60, _alertPwdView.frame.size.height / 3);
     
     //创建原密码label
@@ -238,29 +224,29 @@ NSInteger flag = 0;
     _oldPwdText.keyboardType = UIKeyboardTypeNumberPad;     //键盘类型
     [_alertPwdView addSubview:_oldPwdText];
     
-    //创建新密码label
-    self.newPwdLabel = [self createLabelWithName:@"新密码" andFrame:CGRectMake(_oldPwdLabel.frame.origin.x, _oldPwdLabel.frame.origin.y + _oldPwdLabel.frame.size.height + 5, _oldPwdLabel.frame.size.width, _oldPwdLabel.frame.size.height)];
-    _newPwdLabel.tintColor = [UIColor whiteColor];
-    [_alertPwdView addSubview:_newPwdLabel];
-    
-    //创建新密码text
-    self.newPwdText = [self createTextFieldWithName:@"请输入新密码" andFrame:CGRectMake(_oldPwdText.frame.origin.x, _oldPwdText.frame.origin.y + _oldPwdText.frame.size.height + 5, _oldPwdText.frame.size.width, _oldPwdText.frame.size.height)];
-    _newPwdText.tag = xinMima;              //text的tag值
-    _newPwdText.keyboardType = UIKeyboardTypeNumberPad;     //键盘类型
-    [_newPwdText setEnabled:NO];            //初始化新密码框不能编辑
-    [_alertPwdView addSubview:_newPwdText];
-    
-    //创建保存按钮
-    self.confirmBtn = [self createButtonWithName:@"保存" andFrame:CGRectMake(_newPwdLabel.frame.origin.x, _newPwdLabel.frame.origin.y + _newPwdLabel.frame.size.height + 5, 60, _newPwdLabel.frame.size.height)];
-    _concelBtn.tag = alertBaoCun;
-    self.confirmBtn.tintColor = [UIColor orangeColor];
-    [_alertPwdView addSubview:_confirmBtn];
-    
-    //创建取消按钮
-    self.concelBtn = [self createButtonWithName:@"取消" andFrame:CGRectMake(_newPwdText.frame.origin.x, _newPwdText.frame.origin.y + _newPwdText.frame.size.height + 5, 60, _newPwdText.frame.size.height)];
-    [_alertPwdView addSubview:_concelBtn];
-    self.concelBtn.tintColor = [UIColor orangeColor];
-    [_alertPwdView addSubview:imgView];
+//    //创建新密码label
+//    self.newPwd = [self createLabelWithName:@"新密码" andFrame:CGRectMake(_oldPwdLabel.frame.origin.x, _oldPwdLabel.frame.origin.y + _oldPwdLabel.frame.size.height + 5, _oldPwdLabel.frame.size.width, _oldPwdLabel.frame.size.height)];
+//    _newPwd.tintColor = [UIColor whiteColor];
+//    [_alertPwdView addSubview:_newPwd];
+//    
+//    //创建新密码text
+//    self.newPwdField = [self createTextFieldWithName:@"请输入新密码" andFrame:CGRectMake(_oldPwdText.frame.origin.x, _oldPwdText.frame.origin.y + _oldPwdText.frame.size.height + 5, _oldPwdText.frame.size.width, _oldPwdText.frame.size.height)];
+//    _newPwdField.tag = xinMima;              //text的tag值
+//    _newPwdField.keyboardType = UIKeyboardTypeNumberPad;     //键盘类型
+//    [_newPwdField setEnabled:NO];            //初始化新密码框不能编辑
+//    [_alertPwdView addSubview:_newPwdField];
+//    
+//    //创建保存按钮
+//    self.confirmBtn = [self createButtonWithName:@"保存" andFrame:CGRectMake(_newPwd.frame.origin.x, _newPwd.frame.origin.y + _newPwd.frame.size.height + 5, 60, _newPwd.frame.size.height)];
+//    _concelBtn.tag = alertBaoCun;
+//    self.confirmBtn.tintColor = [UIColor orangeColor];
+//    [_alertPwdView addSubview:_confirmBtn];
+//    
+//    //创建取消按钮
+//    self.concelBtn = [self createButtonWithName:@"取消" andFrame:CGRectMake(_newPwdField.frame.origin.x, _newPwdField.frame.origin.y + _newPwdField.frame.size.height + 5, 60, _newPwdField.frame.size.height)];
+//    [_alertPwdView addSubview:_concelBtn];
+//    self.concelBtn.tintColor = [UIColor orangeColor];
+//    [_alertPwdView addSubview:imgView];
     
     CGRect frame;
     frame = _alertPwdView.frame;
@@ -275,7 +261,7 @@ NSInteger flag = 0;
     
     //给量个输入框设置代理事假
     _oldPwdText.delegate = self;
-    _newPwdText.delegate = self;
+//    _newPwdField.delegate = self;
     
     i = 1;
     
@@ -286,11 +272,11 @@ NSInteger flag = 0;
 //创建设置密码的view
 - (UIView *)createSetPwdView
 {
-    self.setPwdView = [[[UIView alloc] initWithFrame:CGRectMake(50, 173, self.view.frame.size.width, 180)] autorelease];
+    self.setPwdView = [[UIView alloc] initWithFrame:CGRectMake(50, 173, self.view.frame.size.width, 180)];
     _setPwdView.tag = setViewTag;
     
-    UIImage *img = [[[UIImage alloc] init] autorelease];
-    UIImageView *imgView = [[[UIImageView alloc] initWithImage:img] autorelease];
+    UIImage *img = [[UIImage alloc] init];
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
     imgView.frame = CGRectMake(30, 0, _setPwdView.frame.size.width - 60, _setPwdView.frame.size.height / 3);
     
     //创建密码label
@@ -305,28 +291,28 @@ NSInteger flag = 0;
     _oldPwdText.keyboardType = UIKeyboardTypeNumberPad;     //键盘类型
     [_setPwdView addSubview:_oldPwdText];
     
-    //创建agian密码label
-    self.newPwdLabel = [self createLabelWithName:@"再次输入" andFrame:CGRectMake(_oldPwdLabel.frame.origin.x - 15, _oldPwdLabel.frame.origin.y + _oldPwdLabel.frame.size.height + 5, _oldPwdLabel.frame.size.width + 10, _oldPwdLabel.frame.size.height)];
-    _newPwdLabel.tintColor = [UIColor whiteColor];
-    [_setPwdView addSubview:_newPwdLabel];
+//    //创建agian密码label
+//    self.newPwd = [self createLabelWithName:@"再次输入" andFrame:CGRectMake(_oldPwdLabel.frame.origin.x - 15, _oldPwdLabel.frame.origin.y + _oldPwdLabel.frame.size.height + 5, _oldPwdLabel.frame.size.width + 10, _oldPwdLabel.frame.size.height)];
+//    _newPwd.tintColor = [UIColor whiteColor];
+//    [_setPwdView addSubview:_newPwd];
+//    
+//    //创建again密码text
+//    self.newPwdField = [self createTextFieldWithName:@"请再输入一次密码" andFrame:CGRectMake(_oldPwdText.frame.origin.x, _oldPwdText.frame.origin.y + _oldPwdText.frame.size.height + 5, _oldPwdText.frame.size.width, _oldPwdText.frame.size.height)];
+//    _newPwdField.delegate = self;
+//    _newPwdField.tag = againMima;
+//    _newPwdField.keyboardType = UIKeyboardTypeNumberPad;     //键盘类型
+//    [_setPwdView addSubview:_newPwdField];
     
-    //创建again密码text
-    self.newPwdText = [self createTextFieldWithName:@"请再输入一次密码" andFrame:CGRectMake(_oldPwdText.frame.origin.x, _oldPwdText.frame.origin.y + _oldPwdText.frame.size.height + 5, _oldPwdText.frame.size.width, _oldPwdText.frame.size.height)];
-    _newPwdText.delegate = self;
-    _newPwdText.tag = againMima;
-    _newPwdText.keyboardType = UIKeyboardTypeNumberPad;     //键盘类型
-    [_setPwdView addSubview:_newPwdText];
-    
-    //创建保存按钮
-    self.confirmBtn = [self createButtonWithName:@"保存" andFrame:CGRectMake(_newPwdLabel.frame.origin.x + 2, _newPwdLabel.frame.origin.y + _newPwdLabel.frame.size.height + 5, 60, _newPwdLabel.frame.size.height)];
-    self.confirmBtn.tintColor = [UIColor orangeColor];
-    [_setPwdView addSubview:_confirmBtn];
-    
-    //创建取消按钮
-    self.concelBtn = [self createButtonWithName:@"取消" andFrame:CGRectMake(_newPwdText.frame.origin.x, _newPwdText.frame.origin.y + _newPwdText.frame.size.height + 5, 60, _newPwdText.frame.size.height)];
-    [_setPwdView addSubview:_concelBtn];
-    self.concelBtn.tintColor = [UIColor orangeColor];
-    [_setPwdView addSubview:imgView];
+//    //创建保存按钮
+//    self.confirmBtn = [self createButtonWithName:@"保存" andFrame:CGRectMake(_newPwd.frame.origin.x + 2, _newPwd.frame.origin.y + _newPwd.frame.size.height + 5, 60, _newPwd.frame.size.height)];
+//    self.confirmBtn.tintColor = [UIColor orangeColor];
+//    [_setPwdView addSubview:_confirmBtn];
+//    
+//    //创建取消按钮
+//    self.concelBtn = [self createButtonWithName:@"取消" andFrame:CGRectMake(_newPwdField.frame.origin.x, _newPwdField.frame.origin.y + _newPwdField.frame.size.height + 5, 60, _newPwdField.frame.size.height)];
+//    [_setPwdView addSubview:_concelBtn];
+//    self.concelBtn.tintColor = [UIColor orangeColor];
+//    [_setPwdView addSubview:imgView];
     
     CGRect frame;
     frame = _setPwdView.frame;
@@ -341,7 +327,7 @@ NSInteger flag = 0;
     
     //给两个输入框设置代理事件
     _oldPwdText.delegate = self;
-    _newPwdText.delegate = self;
+//    _newPwdField.delegate = self;
     
     i = 2;
     
@@ -367,7 +353,6 @@ NSInteger flag = 0;
             textField.text = [toBeString substringToIndex:6];
             UIAlertView *aler = [[UIAlertView alloc] initWithTitle:@"warnning" message:@"不能超过6个数字" delegate:self cancelButtonTitle:@"ok" otherButtonTitles: nil];
             [aler show];
-            [aler release];
             [textField setEnabled:NO];
             return NO;
         }
@@ -385,12 +370,10 @@ NSInteger flag = 0;
         if (string.length == 0) {       //输入框长度为0的情况
             UIAlertView *aler = [[UIAlertView alloc] initWithTitle:@"提示" message:@"输入不能为空" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
             [aler show];
-            [aler release];
         } else {
             if ([self isKongWith:string]) {          //输入框全为空字符的情况
                 UIAlertView *aler = [[UIAlertView alloc] initWithTitle:@"提示" message:@"不能全是空字符" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
                 [aler show];
-                [aler release];
             }
         }
     }
@@ -418,7 +401,6 @@ NSInteger flag = 0;
             //提示密码输入错误
             UIAlertView *aler = [[UIAlertView alloc] initWithTitle:@"提示" message:@"原密码输入错误" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
             [aler show];
-            [aler release];
         }
     }
 }
@@ -497,7 +479,7 @@ NSInteger flag = 0;
         if ([mima isEqualToString:mima2]) {     //设置密码成功
 //#提示 将密码存到数据库
             //将该数据存到数据库
-            lxyUserTableModel *model = [[[lxyUserTableModel alloc] initWithID:0 andName:nil andPWD:nil andBirthday:nil andHeaderImage:nil andIntroduce:nil andPhoto1:nil andPhoto2:nil] autorelease];
+            lxyUserTableModel *model = [[lxyUserTableModel alloc] initWithID:0 andName:nil andPWD:nil andBirthday:nil andHeaderImage:nil andIntroduce:nil andPhoto1:nil andPhoto2:nil];
             
             //插入数据库的时候看一下数据库中是否有数据
 //            NSMutableArray *array = [[[NSMutableArray alloc] init] autorelease];
@@ -540,17 +522,14 @@ NSInteger flag = 0;
             
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"设置成功" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
             [alert show];
-            [alert release];
             
         } else {                    //设置密码失败
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示" message:@"两次输入不一样" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
             [alert show];
-            [alert release];
         }
     } else {
         UIAlertView *aler = [[UIAlertView alloc] initWithTitle:@"提示" message:@"请输入6位数字的密码" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
         [aler show];
-        [aler release];
     }
 
 }
@@ -599,12 +578,10 @@ NSInteger flag = 0;
         //提示修改成功
         UIAlertView *aler = [[UIAlertView alloc] initWithTitle:@"" message:@"修改密码成功" delegate:self cancelButtonTitle:@"ok" otherButtonTitles: nil];
         [aler show];
-        [aler release];
         
     } else {
         UIAlertView *aler = [[UIAlertView alloc] initWithTitle:@"warnning" message:@"密码为6位数字" delegate:self cancelButtonTitle:@"ok" otherButtonTitles: nil];
         [aler show];
-        [aler release];
     }
     
 }
@@ -756,7 +733,6 @@ NSInteger flag = 0;
 
 - (void)didReceiveMemory提示
 {
-    [super didReceiveMemory提示];
     // Dispose of any resources that can be recreated.
 }
 

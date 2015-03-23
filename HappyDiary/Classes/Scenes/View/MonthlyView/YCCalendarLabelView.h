@@ -10,8 +10,8 @@
 
 @interface YCCalendarLabelView : UIView
 
-@property (nonatomic, retain) UILabel *label;
-@property (nonatomic, retain) UILabel *labelCell;
-@property (nonatomic, retain) UIImageView *imageViewCell;
+@property (nonatomic, strong) UILabel *label;
+@property (nonatomic, strong) UILabel *labelCell;
+@property (nonatomic, strong) UIImageView *imageViewCell;
 
 @end

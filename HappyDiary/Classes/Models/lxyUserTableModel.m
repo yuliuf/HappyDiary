@@ -10,16 +10,6 @@
 
 @implementation lxyUserTableModel
 
-- (void)dealloc
-{
-    [_user_birthday release];
-    [_user_headerImage release];
-    [_user_introduce release];
-    [_user_name release];
-    [_user_pwd release];
-    
-    [super dealloc];
-}
 
 - (instancetype)initWithID:(NSInteger)ID
                    andName:(NSString *)name

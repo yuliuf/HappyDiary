@@ -16,14 +16,6 @@
 
 @implementation YCWeeklyDetailViewController
 
-- (void)dealloc
-{
-    [_weeklyDetailView release];
-    [_iconImage release];
-    [_contentImage release];
-    
-    [super dealloc];
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,7 +28,7 @@
 
 - (void)loadView
 {
-    self.weeklyDetailView = [[[YCWeeklyDetailView alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.weeklyDetailView = [[YCWeeklyDetailView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.view = _weeklyDetailView;
     
     _weeklyDetailView.iconImageView.image = _iconImage;

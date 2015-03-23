@@ -24,17 +24,17 @@
 -(void)createCalendar;
 
 
-@property (nonatomic , retain) lxyMonthlyView *monthlyView;
-@property (nonatomic , retain) lxyWeeklyView *weeklyView;
-@property (nonatomic , retain) lxyDailyView *dailyView;
-@property (nonatomic , retain) lxyPersonDataView *personDataView;
+@property (nonatomic , strong) lxyMonthlyView *monthlyView;
+@property (nonatomic , strong) lxyWeeklyView *weeklyView;
+@property (nonatomic , strong) lxyDailyView *dailyView;
+@property (nonatomic , strong) lxyPersonDataView *personDataView;
 
-@property (nonatomic , retain) lxyBaseView *baseView;
+@property (nonatomic , strong) lxyBaseView *baseView;
 
 
 @property (nonatomic , assign) CGRect frame;        //保存frame
 @property (nonatomic , assign) CGFloat height;
 @property (nonatomic , assign) CGPoint touchPoint;  //点击屏幕的位置
-@property (nonatomic , retain) UITapGestureRecognizer *tapHeadIcon;     //给头像图片添加一个轻拍手势
+@property (nonatomic , strong) UITapGestureRecognizer *tapHeadIcon;     //给头像图片添加一个轻拍手势
 
 @end

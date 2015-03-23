@@ -21,7 +21,7 @@
 
 @interface LYRoomViewViewController ()<UINavigationControllerDelegate , UIActionSheetDelegate , UIImagePickerControllerDelegate>
 
-@property (nonatomic, retain) LYRoomView *roomView;
+@property (nonatomic, strong) LYRoomView *roomView;
 @property (nonatomic, assign) NSInteger flag;
 
 @end
@@ -40,7 +40,7 @@ NSInteger zhaoxiangji = 0;
 }
 - (void)loadView
 {
-    self.roomView = [[[LYRoomView alloc] initWithFrame:[UIScreen mainScreen].bounds] autorelease];
+    self.roomView = [[LYRoomView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.view = self.roomView;
 }
 
@@ -74,26 +74,22 @@ NSInteger zhaoxiangji = 0;
   
     YCDiaryViewController *diaryVC = [[YCDiaryViewController alloc] init];
     [self presentViewController:diaryVC animated:YES completion:nil];
-    [diaryVC release];
 }
 - (void)settingAction:(LYButtonImageView *)sender
 {
     lxySettingViewController *settingVC = [[lxySettingViewController alloc] init];
     [self presentViewController:settingVC animated:YES completion:nil];
-    [settingVC release];
 }
 - (void)sgAction:(LYButtonImageView *)sender
 {
     YCHourglassViewController *hgVC = [[YCHourglassViewController alloc] init];
     [self presentViewController:hgVC animated:YES completion:nil];
-    [hgVC release];
 }
 
 - (void)canledarTap:(UIGestureRecognizer *)sender
 {
     lxyEventViewController *eventVC = [[lxyEventViewController alloc] init];
     [self presentViewController:eventVC animated:YES completion:nil];
-    [eventVC release];
     
 }
 
@@ -144,12 +140,10 @@ NSInteger zhaoxiangji = 0;
         picker.sourceType = UIImagePickerControllerSourceTypeCamera;
         
         [self presentViewController:picker animated:YES completion:nil];
-        [picker release];
     } else {
         //如果没有的话要提示用户
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"warnning" message:@"no camera" delegate:self cancelButtonTitle:@"ok" otherButtonTitles: nil];
         [alert show];
-        [alert release];
     }
 }
 
@@ -165,11 +159,9 @@ NSInteger zhaoxiangji = 0;
         //打开相册选择图片
         picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
         [self presentViewController:picker animated:YES completion:nil];
-        [picker release];
     } else {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"warnning" message:@"no photo library" delegate:self cancelButtonTitle:@"ok" otherButtonTitles: nil];
         [alert show];
-        [alert release];
     }
 }
 //UIImagePickerControllerDelegate里的方法
@@ -213,7 +205,7 @@ NSInteger zhaoxiangji = 0;
     NSString *imagePath = [KDocument stringByAppendingPathComponent:[NSString stringWithFormat:@"%@.png", time]];
     [imageData writeToFile:imagePath atomically:YES];
     
-    UIImage *selectImage = [[[UIImage alloc] initWithContentsOfFile:imagePath] autorelease];
+    UIImage *selectImage = [[UIImage alloc] initWithContentsOfFile:imagePath];
 //    [selectImage release];
     
     //如果是从照相机进来的 这个方法
@@ -275,7 +267,6 @@ NSInteger zhaoxiangji = 0;
     YCSpecialDayViewController *specialDayVC = [[YCSpecialDayViewController alloc] init];
     specialDayVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self presentViewController:specialDayVC animated:YES completion:nil];
-    [specialDayVC release];
 }
 
 #pragma mark 隐藏导航栏上方系统时间、电池显示

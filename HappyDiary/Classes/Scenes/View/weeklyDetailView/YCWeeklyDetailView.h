@@ -10,11 +10,11 @@
 
 @interface YCWeeklyDetailView : UIView
 
-@property (nonatomic , retain) UITapGestureRecognizer *tap;     //该view的轻怕事件
+@property (nonatomic , strong) UITapGestureRecognizer *tap;     //该view的轻怕事件
 
-@property (nonatomic , retain) UIImageView *iconImageView;
-@property (nonatomic , retain) UILabel *title;
-@property (nonatomic , retain) UILabel *day;
-@property (nonatomic , retain) UIImageView *contentImageView;
+@property (nonatomic , strong) UIImageView *iconImageView;
+@property (nonatomic , strong) UILabel *title;
+@property (nonatomic , strong) UILabel *day;
+@property (nonatomic , strong) UIImageView *contentImageView;
 
 @end

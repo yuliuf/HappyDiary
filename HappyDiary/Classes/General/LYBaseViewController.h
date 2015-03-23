@@ -10,5 +10,5 @@
 
 @interface LYBaseViewController : UIViewController
 
-@property (nonatomic, retain) UIButton *backButton;
+@property (nonatomic, strong) UIButton *backButton;
 @end

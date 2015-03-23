@@ -11,10 +11,10 @@
 @interface lxyHourglassTabaleModel : NSObject
 
 @property (nonatomic , assign) NSInteger hg_id;
-@property (nonatomic , retain) NSString *hg_name;
-@property (nonatomic , retain) NSString *hg_time;
-@property (nonatomic , retain) NSString *hg_image;
-@property (nonatomic , retain) NSString *hg_music;
+@property (nonatomic , strong) NSString *hg_name;
+@property (nonatomic , strong) NSString *hg_time;
+@property (nonatomic , strong) NSString *hg_image;
+@property (nonatomic , strong) NSString *hg_music;
 
 - (instancetype)initWithID:(NSInteger)ID
                    andName:(NSString *)name

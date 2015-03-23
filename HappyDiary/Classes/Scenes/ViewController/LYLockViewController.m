@@ -12,7 +12,7 @@
 #import "LYRoomViewViewController.h"
 
 @interface LYLockViewController () <UITextFieldDelegate>
-@property (nonatomic, retain)LYLockView *lockView;
+@property (nonatomic, strong)LYLockView *lockView;
 @end
 
 @implementation LYLockViewController
@@ -28,7 +28,7 @@
 
 -(void)loadView
 {
-    self.lockView = [[[LYLockView alloc] initWithFrame:[UIScreen mainScreen].bounds] autorelease];
+    self.lockView = [[LYLockView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.view = self.lockView;
 }
 
@@ -59,7 +59,6 @@
         self.lockView.lockImageView.image = [UIImage imageNamed:@"unlock"];
         LYRoomViewViewController *roomVC = [[LYRoomViewViewController alloc] init];
         [self presentViewController:roomVC animated:YES completion:nil];
-        [roomVC release];
     } else {
         self.lockView.alertLabel.alpha = 1.f;
         self.lockView.alertLabel.text = @"密码不正确！";

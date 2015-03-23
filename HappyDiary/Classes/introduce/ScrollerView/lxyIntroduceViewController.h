@@ -12,6 +12,6 @@
 
 @interface lxyIntroduceViewController : UIViewController
 
-@property (nonatomic , retain) lxyIntroduce *introduceView;
+@property (nonatomic , strong) lxyIntroduce *introduceView;
 
 @end

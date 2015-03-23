@@ -12,15 +12,15 @@
 
 @property (nonatomic , assign) CGPoint beginPoint;
 
-@property (nonatomic , retain) UIImageView *jiepingImageView;
+@property (nonatomic , strong) UIImageView *jiepingImageView;
 
-@property (nonatomic , retain) UIButton *finishButton;      //完成按钮
+@property (nonatomic , strong) UIButton *finishButton;      //完成按钮
 
-@property (nonatomic , retain) UIButton *cancelButton;      //取消按钮
+@property (nonatomic , strong) UIButton *cancelButton;      //取消按钮
 
 @property (nonatomic , assign) NSInteger biaoji;
 
-@property (nonatomic , assign) UITapGestureRecognizer *tap;
-@property (nonatomic, assign) UILongPressGestureRecognizer *longPressTap;
+@property (nonatomic , strong) UITapGestureRecognizer *tap;
+@property (nonatomic, strong) UILongPressGestureRecognizer *longPressTap;
 
 @end

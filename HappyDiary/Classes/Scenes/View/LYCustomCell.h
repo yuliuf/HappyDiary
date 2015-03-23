@@ -10,6 +10,6 @@
 
 @interface LYCustomCell : UITableViewCell
 
-@property (nonatomic, retain) UIImageView *image;
+@property (nonatomic, strong) UIImageView *image;
 
 @end

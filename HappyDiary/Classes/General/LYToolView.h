@@ -11,8 +11,8 @@
 @interface LYToolView : UIView
 
 @property (nonatomic, copy) NSString *title;  //  标题
-@property (nonatomic, retain) UILabel *titleLbl; //  标题label
-@property (nonatomic, retain) UIButton *closeBtn;  // 关闭按钮
+@property (nonatomic, strong) UILabel *titleLbl; //  标题label
+@property (nonatomic, strong) UIButton *closeBtn;  // 关闭按钮
 
 - (LYToolView *)initWithTitle:(NSString *)title withFrame:(CGRect)frame;
 

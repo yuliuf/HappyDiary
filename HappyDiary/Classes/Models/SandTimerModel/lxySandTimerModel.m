@@ -20,7 +20,7 @@
 {
     if (self = [super init]) {
         self.ID = ID;
-        self.style = style;
+        self.sandStyle = style;
         self.backGroundMusic = backGroundMusic;
         self.peopleName = peopleName;
         self.time = time;

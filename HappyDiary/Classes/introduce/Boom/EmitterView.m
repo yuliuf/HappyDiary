@@ -13,11 +13,6 @@
     CAEmitterLayer *_emitterView; // 1
 }
 
-- (void)dealloc
-{
-    [_emitterView release];
-    [super dealloc];
-}
 
 - (id)initWithFrame:(CGRect)frame
 {

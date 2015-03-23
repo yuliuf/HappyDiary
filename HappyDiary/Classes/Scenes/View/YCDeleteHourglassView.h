@@ -10,9 +10,9 @@
 
 @interface YCDeleteHourglassView : UIView
 
-@property (nonatomic, retain) UILabel *noticeLabel;
-@property (nonatomic, retain) UITextField *nameTextField;
-@property (nonatomic, retain) UIButton *saveButton;
-@property (nonatomic, retain) UIButton *cancelButton;
+@property (nonatomic, strong) UILabel *noticeLabel;
+@property (nonatomic, strong) UITextField *nameTextField;
+@property (nonatomic, strong) UIButton *saveButton;
+@property (nonatomic, strong) UIButton *cancelButton;
 
 @end

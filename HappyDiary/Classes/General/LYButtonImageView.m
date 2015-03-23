@@ -17,18 +17,12 @@
 @end
 
 @implementation LYButtonImageView
-- (void)dealloc
-{
-    [_content release];
-    
-    [super dealloc];
-}
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.content = [[[UILabel alloc] initWithFrame:Rect(10, 10, frame.size.width - 20, frame.size.height - 20)] autorelease];
+        self.content = [[UILabel alloc] initWithFrame:Rect(10, 10, frame.size.width - 20, frame.size.height - 20)];
         _content.backgroundColor = [UIColor clearColor];
         _content.numberOfLines = 0;
         _content.textAlignment = NSTextAlignmentCenter;
@@ -46,7 +40,7 @@
     self = [super initWithImage:image];
     if (self) {
         CGSize size = image.size;
-        self.content = [[[UILabel alloc] initWithFrame:Rect(10, 10, size.width - 20, size.height - 20)] autorelease];
+        self.content = [[UILabel alloc] initWithFrame:Rect(10, 10, size.width - 20, size.height - 20)];
         _content.backgroundColor = [UIColor clearColor];
         _content.numberOfLines = 0;
         _content.textAlignment = NSTextAlignmentCenter;

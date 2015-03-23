@@ -10,9 +10,9 @@
 
 @interface YCOneDetailView : UIView
 
-@property (nonatomic, retain) UIImageView *bgImageView;
-@property (nonatomic, retain) UITextView *textView;
-@property (nonatomic, retain) UIButton *changeImageButton;
-@property (nonatomic, retain) UIButton *deleteButton;
-@property (nonatomic, assign) UITapGestureRecognizer *tapGR;
+@property (nonatomic, strong) UIImageView *bgImageView;
+@property (nonatomic, strong) UITextView *textView;
+@property (nonatomic, strong) UIButton *changeImageButton;
+@property (nonatomic, strong) UIButton *deleteButton;
+@property (nonatomic, strong) UITapGestureRecognizer *tapGR;
 @end

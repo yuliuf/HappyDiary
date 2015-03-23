@@ -10,15 +10,6 @@
 
 @implementation lxyHourglassTabaleModel
 
--(void)dealloc
-{
-    [_hg_image release];
-    [_hg_music release];
-    [_hg_name release];
-    [_hg_time release];
-    
-    [super dealloc];
-}
 
 - (instancetype)initWithID:(NSInteger)ID
                    andName:(NSString *)name

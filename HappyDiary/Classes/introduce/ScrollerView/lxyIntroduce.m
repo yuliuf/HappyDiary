@@ -11,13 +11,6 @@
 
 @implementation lxyIntroduce
 
--(void)dealloc
-{
-    [_scroller release];
-    [_loginBtn release];
-    
-    [super dealloc];
-}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -39,7 +32,7 @@
     @autoreleasepool {
         for (int i = 1; i < 5; i ++) {
             NSString *iamgePath = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"jieshaoImage%d",i] ofType:@"png"];
-            UIImage *img = [[[UIImage alloc] initWithContentsOfFile:iamgePath] autorelease];
+            UIImage *img = [[UIImage alloc] initWithContentsOfFile:iamgePath];
             UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
             imgView.frame = CGRectMake((i - 1) * self.bounds.size.width, 0, self.bounds.size.width, self.bounds.size.height);
             imgView.userInteractionEnabled = YES;
@@ -51,7 +44,7 @@
                 _loginBtn.frame = CGRectMake(275, self.bounds.size.height - 50, 40, 20);
                 [_loginBtn setTitle:@"Next" forState:UIControlStateNormal];
                 //初始化爆咋效果
-                self.boom = [[[EmitterView alloc] initWithFrame:CGRectZero] autorelease];
+                self.boom = [[EmitterView alloc] initWithFrame:CGRectZero];
                 [_loginBtn addSubview:_boom];
                 
                 [imgView addSubview:_loginBtn];
@@ -100,7 +93,7 @@
     animation.repeatCount = MAXFLOAT;
     animation.path = path;
     [_boom.layer addAnimation:animation forKey:@"test"];
-    [(id)path release];
+    (id)CFBridgingRelease(path);
 
     
 }

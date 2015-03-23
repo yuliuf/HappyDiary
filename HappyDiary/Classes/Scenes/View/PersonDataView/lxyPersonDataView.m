@@ -20,19 +20,6 @@
 
 @implementation lxyPersonDataView
 
--(void)dealloc
-{
-    [_monthlyButton1 release];
-    [_weeklyButton1 release];
-    [_dailyButton1 release];
-    [_personDataButton2 release];
-    [_imageView release];
-    [_imageViewTitle release];
-    [_tap release];
-    //    [_scroller release];
-    
-    [super dealloc];
-}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -50,7 +37,7 @@
 - (UITapGestureRecognizer *)tap
 {
     if (nil == _tap) {
-        self.tap = [[[UITapGestureRecognizer alloc] init] autorelease];
+        self.tap = [[UITapGestureRecognizer alloc] init];
         [self addGestureRecognizer:_tap];
     }
     return _tap;
@@ -82,16 +69,16 @@
     
     //设置每个button的背景图片
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"menu_monthly_off" ofType:@"png"];
-    UIImage *image = [[[UIImage alloc] initWithContentsOfFile:imagePath] autorelease];
+    UIImage *image = [[UIImage alloc] initWithContentsOfFile:imagePath];
     [_monthlyButton1 setBackgroundImage:image forState:UIControlStateNormal];
     imagePath = [[NSBundle mainBundle] pathForResource:@"menu_weekly_off" ofType:@"png"];
-    image = [[[UIImage alloc] initWithContentsOfFile:imagePath] autorelease];
+    image = [[UIImage alloc] initWithContentsOfFile:imagePath];
     [_weeklyButton1 setBackgroundImage:image forState:UIControlStateNormal];
     imagePath = [[NSBundle mainBundle] pathForResource:@"menu_daily_off" ofType:@"png"];
-    image = [[[UIImage alloc] initWithContentsOfFile:imagePath] autorelease];
+    image = [[UIImage alloc] initWithContentsOfFile:imagePath];
     [_dailyButton1 setBackgroundImage:image forState:UIControlStateNormal];
     imagePath = [[NSBundle mainBundle] pathForResource:@"menu_personal_on" ofType:@"png"];
-    image = [[[UIImage alloc] initWithContentsOfFile:imagePath] autorelease];
+    image = [[UIImage alloc] initWithContentsOfFile:imagePath];
     [_personDataButton2 setBackgroundImage:image forState:UIControlStateNormal];
     
 //    //设置每个button的文字
@@ -112,15 +99,15 @@
     
     //添加背景图片
     imagePath = [[NSBundle mainBundle] pathForResource:@"book" ofType:@"png"];
-    UIImage *img = [[[UIImage alloc] initWithContentsOfFile:imagePath] autorelease];
-    self.imageView = [[[UIImageView alloc] initWithImage:img] autorelease];
+    UIImage *img = [[UIImage alloc] initWithContentsOfFile:imagePath];
+    self.imageView = [[UIImageView alloc] initWithImage:img];
     _imageView.userInteractionEnabled = YES;
     _imageView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
     [self addSubview:_imageView];
     
     imagePath = [[NSBundle mainBundle] pathForResource:@"title" ofType:@"png"];
-    UIImage *imgTitle = [[[UIImage alloc] initWithContentsOfFile:imagePath] autorelease];
-    self.imageViewTitle = [[[UIImageView alloc] initWithImage:imgTitle] autorelease];
+    UIImage *imgTitle = [[UIImage alloc] initWithContentsOfFile:imagePath];
+    self.imageViewTitle = [[UIImageView alloc] initWithImage:imgTitle];
     _imageViewTitle.userInteractionEnabled = YES;
     _imageViewTitle.frame = CGRectMake(0, 0, self.frame.size.width, 54);
     [self addSubview:_imageViewTitle];
@@ -136,7 +123,7 @@
     self.editBtn = [UIButton buttonWithType:UIButtonTypeSystem];
     _editBtn.frame = CGRectMake(230,ScreenHeight - 80, 60, 30);
     imagePath = [[NSBundle mainBundle] pathForResource:@"intro_menu_brown" ofType:@"png"];
-    image = [[[UIImage alloc] initWithContentsOfFile:imagePath] autorelease];
+    image = [[UIImage alloc] initWithContentsOfFile:imagePath];
     [self.editBtn setBackgroundImage:image forState:UIControlStateNormal];
     [self.editBtn setTitle:@"编辑" forState:UIControlStateNormal];
     self.editBtn.titleLabel.font = myZiti;
@@ -150,7 +137,7 @@
     array = [[lxyDataBase shareLxyDataBase] searchAllDataFromUserTable];
     if (0 == array.count) {     //如果数据库中没有数据
         NSString *imagePathGai = [[NSBundle mainBundle] pathForResource:@"headIcon" ofType:@"png"];
-        imageTou = [[[UIImage alloc] initWithContentsOfFile:imagePathGai] autorelease];
+        imageTou = [[UIImage alloc] initWithContentsOfFile:imagePathGai];
     } else {            //如果数据库中有数据
         //判断头像的图片路径是否为空
         lxyUserTableModel *model = nil;
@@ -158,17 +145,17 @@
         NSString *imagePath = model.user_headerImage;
         if ([imagePath isEqualToString:@"(null)"]) {
             NSString *imagePathGai = [[NSBundle mainBundle] pathForResource:@"headIcon" ofType:@"png"];
-            imageTou = [[[UIImage alloc] initWithContentsOfFile:imagePathGai] autorelease];
+            imageTou = [[UIImage alloc] initWithContentsOfFile:imagePathGai];
         } else {
-            imageTou = [[[UIImage alloc] initWithContentsOfFile:imagePath] autorelease];
+            imageTou = [[UIImage alloc] initWithContentsOfFile:imagePath];
         }
     }
-    self.headerIcon = [[[UIImageView alloc] initWithImage:imageTou] autorelease];
+    self.headerIcon = [[UIImageView alloc] initWithImage:imageTou];
     self.headerIcon.frame = Rect(50, 60, 120, 120);
     [self addSubview:self.headerIcon];
     
     // 姓名 生日
-    self.name = [[[UITextField alloc] initWithFrame:Rect(MaxX(_headerIcon.frame) + 10, MinY(_headerIcon.frame) + 50, 100, 40)] autorelease];
+    self.name = [[UITextField alloc] initWithFrame:Rect(MaxX(_headerIcon.frame) + 10, MinY(_headerIcon.frame) + 50, 100, 40)];
     self.name.text = @"熊博士";
     self.name.textAlignment = NSTextAlignmentCenter;
     self.name.font = myZiti;
@@ -176,7 +163,7 @@
     self.name.tag = NameTag;
     [self addSubview:self.name];
     
-    self.birthday = [[[UITextField alloc] initWithFrame:Rect(MinX(_name.frame), MaxY(_name.frame), 100, 30)] autorelease];
+    self.birthday = [[UITextField alloc] initWithFrame:Rect(MinX(_name.frame), MaxY(_name.frame), 100, 30)];
     self.birthday.text = @"1992.3.24";
     self.birthday.textAlignment = NSTextAlignmentCenter;
     self.birthday.font = myZiti;
@@ -185,7 +172,7 @@
     [self addSubview:self.birthday];
     
     // 介绍
-    self.introduce = [[[UITextView alloc] initWithFrame:Rect(MinX(_headerIcon.frame), MaxY(_headerIcon.frame) + 30, 220, ScreenHeight * 0.36)] autorelease];
+    self.introduce = [[UITextView alloc] initWithFrame:Rect(MinX(_headerIcon.frame), MaxY(_headerIcon.frame) + 30, 220, ScreenHeight * 0.36)];
     self.introduce.font = myZiti;
     self.introduce.editable = NO;
     self.introduce.text = @"好简单的愿望，我们小时候，愿望也是好简单，但是不能说。我们只能在作文里写到，我的愿望是做一个科学家······从小，我们就已经不单纯了。英文老师教小朋友们念社会栋梁一段，向，CEO，便是社会栋。";
@@ -197,7 +184,7 @@
     self.personDataBackButton = [UIButton buttonWithType:UIButtonTypeSystem];
     [self.personDataBackButton setFrame:CGRectMake(0, 5, 40, 40)];
     NSString *imagePathGai = [[NSBundle mainBundle] pathForResource:@"diary_out" ofType:@"png"];
-    UIImage *imageGai = [[[UIImage alloc] initWithContentsOfFile:imagePathGai] autorelease];
+    UIImage *imageGai = [[UIImage alloc] initWithContentsOfFile:imagePathGai];
     [self.personDataBackButton setBackgroundImage:imageGai forState:UIControlStateNormal];
     [self addSubview:self.personDataBackButton];
     

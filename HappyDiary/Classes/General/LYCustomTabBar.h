@@ -13,7 +13,7 @@
 
 @property (nonatomic,assign) int currentSelectedIndex;
 
-@property (nonatomic,retain) NSMutableArray *buttons;
+@property (nonatomic,strong) NSMutableArray *buttons;
 
 
 - (void)hideRealTabBar;

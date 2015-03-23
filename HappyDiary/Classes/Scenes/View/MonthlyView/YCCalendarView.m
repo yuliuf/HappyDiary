@@ -37,7 +37,7 @@
 - (YCCalendarView *)createCalOfDay:(int)currentDay Month:(int)currentMonth Year:(int)currentYear MonthName:(NSString *)name
 {
     //  创建日历对象
-    NSCalendar *gregorian = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
+    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     
     //  划分时区Time Zone： GMT，UTC，DST，CST
     [gregorian setTimeZone:[NSTimeZone timeZoneWithAbbreviation:@"UTC"]];
@@ -52,7 +52,7 @@
     NSDate *add1DayDate = firstDayOfMonthDate;
     NSRange range = [gregorian rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:[gregorian dateFromComponents:comps]];
     
-    NSCalendar *cal1 = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
+    NSCalendar *cal1 = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
     NSDateComponents *comps1 = [cal1 components:NSWeekdayCalendarUnit fromDate:firstDayOfMonthDate];
     
     // 1 for mon 8 for sun
@@ -72,7 +72,6 @@
     lblMonthName.font = [UIFont fontWithName:@"LiDeBiao-Xing-3.0" size:30.0];
     lblMonthName.text = name;
     [self addSubview:lblMonthName];
-    [lblMonthName release];
     
     for (int d = 1; d <= range.length; d ++)
     {
@@ -114,7 +113,6 @@
                     UIImage *image = [[UIImage alloc] initWithContentsOfFile:[_diaryArray[i] diary_icon]];
                     //NSLog(@"diary_icon:%@", [_diaryArray[i] diary_icon]);
                     lblForDate.imageViewCell.image = image;
-                    [image release];
                     lblForDate.imageViewCell.contentMode = UIViewContentModeScaleAspectFit;
                 }
             }
@@ -188,25 +186,22 @@
         }
     }
     //  弹出今天日记bcbbcccc
-    YCWeeklyDetailView *weekDetailView = [[[YCWeeklyDetailView alloc] initWithFrame:CGRectMake(0, 5, 320, 558)] autorelease];
+    YCWeeklyDetailView *weekDetailView = [[YCWeeklyDetailView alloc] initWithFrame:CGRectMake(0, 5, 320, 558)];
     if (diaryModel == nil) {
         return;
     } else {
         UIImage *image1 = [[UIImage alloc] initWithContentsOfFile:[diaryModel diary_icon]];
         weekDetailView.iconImageView.image = image1;
-        [image1 release];
         weekDetailView.title.text = diaryModel.diary_title;
         weekDetailView.alpha = 0.1f;
         weekDetailView.tag = 3000;
         weekDetailView.day.text = [diaryModel.diary_time substringWithRange:NSMakeRange(8, 2)];
         UIImage *image2 = [[UIImage alloc] initWithContentsOfFile:[diaryModel diary_content]];
         weekDetailView.contentImageView.image = image2;
-        [image2 release];
     }
     //  轻拍手势
     UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGRAction:)];
     [weekDetailView addGestureRecognizer:tapGR];
-    [tapGR release];
     
     [UIView animateWithDuration:0.3f animations:^{
         weekDetailView.alpha = 1.f;
@@ -242,7 +237,6 @@
     lblNameOfDay.backgroundColor = [UIColor clearColor];
     lblNameOfDay.textColor = UIColorFromRGB(0xB94FFF);
     [self addSubview:lblNameOfDay];
-    [lblNameOfDay release];
     
 }
 
@@ -251,7 +245,7 @@
 {
     // NSLog(@"currentDate %@",currentDate);
     NSDate *dtToday = [NSDate date];
-    NSDateFormatter *dtFormatter = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *dtFormatter = [[NSDateFormatter alloc] init];
     
     [dtFormatter setDateFormat:@"yyyy"];
     int CurrentYear = [[dtFormatter stringFromDate:currentDate]integerValue];

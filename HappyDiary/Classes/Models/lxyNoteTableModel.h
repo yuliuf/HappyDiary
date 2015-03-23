@@ -11,10 +11,10 @@
 @interface lxyNoteTableModel : NSObject
 
 @property (nonatomic , assign) NSInteger note_id;
-@property (nonatomic , retain) NSString *note_time;
-@property (nonatomic , retain) NSString *note_content;
-@property (nonatomic , retain) NSString *note_icon;
-@property (nonatomic , retain) NSString *note_image;
+@property (nonatomic , strong) NSString *note_time;
+@property (nonatomic , strong) NSString *note_content;
+@property (nonatomic , strong) NSString *note_icon;
+@property (nonatomic , strong) NSString *note_image;
 @property (nonatomic , assign) NSInteger hg_id;
 
 - (instancetype)initWithNoteID:(NSInteger)noteID

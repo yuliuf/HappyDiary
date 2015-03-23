@@ -17,26 +17,13 @@
     NSString *selector;
 }
 
-@property (nonatomic, retain) YCSpecialDayView *specialDayView;
-@property (nonatomic, retain) NSMutableArray *specialDayArray;
+@property (nonatomic, strong) YCSpecialDayView *specialDayView;
+@property (nonatomic, strong) NSMutableArray *specialDayArray;
 
 @end
 
 @implementation YCSpecialDayViewController
 
-- (void)dealloc
-{
-    [_contentView release];
-    [_saveButton release];
-    [_cancleButton release];
-    [_timeLabel release];
-    [_timeTextField release];
-    [_detailLabel release];
-    [_detailTextView release];
-    [_specialDayView release];
-    [_specialDayArray release];
-    [super dealloc];
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -49,7 +36,7 @@
 
 - (void)loadView
 {
-    self.specialDayView = [[[YCSpecialDayView alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.specialDayView = [[YCSpecialDayView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.view = _specialDayView;
 }
 
@@ -101,19 +88,19 @@
     
     
     // 弹出的添加视图
-    self.contentView = [[[UIView alloc] initWithFrame:CGRectMake(10, 149, 300, 170)] autorelease];
+    self.contentView = [[UIView alloc] initWithFrame:CGRectMake(10, 149, 300, 170)];
     self.contentView.layer.borderWidth = .5f;
     self.contentView.layer.cornerRadius = 5.f;
     self.contentView.backgroundColor = UIColorFromRGB(0xFFFFFF);
     
     //  添加视图上的控件
-    self.detailLabel = [[[UILabel alloc] initWithFrame:CGRectMake(10, 25, 60, 30)] autorelease];
+    self.detailLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 25, 60, 30)];
     self.detailLabel.text = @"记录: ";
     self.detailLabel.font = [UIFont fontWithName:@"LiDeBiao-Xing-3.0" size:20.f];
     self.detailLabel.textColor = [UIColor grayColor];
     [self.contentView addSubview:_detailLabel];
     
-    self.detailTextView = [[[UITextView alloc] initWithFrame:CGRectMake(60, 15, 230, 50)] autorelease];
+    self.detailTextView = [[UITextView alloc] initWithFrame:CGRectMake(60, 15, 230, 50)];
     self.detailTextView.font = [UIFont fontWithName:@"LiDeBiao-Xing-3.0" size:17.F];
     self.detailTextView.textColor = [UIColor blackColor];
     self.detailTextView.layer.borderWidth = .5f;
@@ -121,13 +108,13 @@
     //self.detailTextView.layer.borderColor = [[UIColor orangeColor] CGColor];
     [self.contentView addSubview:_detailTextView];
     
-    self.timeLabel = [[[UILabel alloc] initWithFrame:CGRectMake(10, 80, 60, 30)] autorelease];
+    self.timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 80, 60, 30)];
     self.timeLabel.text = @"时间: ";
     self.timeLabel.font = [UIFont fontWithName:@"LiDeBiao-Xing-3.0" size:20.f];
     self.timeLabel.textColor = [UIColor grayColor];
     [self.contentView addSubview:_timeLabel];
     
-    self.timeTextField = [[[UITextField alloc] initWithFrame:CGRectMake(60, 75, 230, 50)] autorelease];
+    self.timeTextField = [[UITextField alloc] initWithFrame:CGRectMake(60, 75, 230, 50)];
     self.timeTextField.font = [UIFont fontWithName:@"LiDeBiao-Xing-3.0" size:19.F];
     self.timeTextField.textColor = [UIColor blackColor];
     self.timeTextField.placeholder = @"2014/07/06";
@@ -232,7 +219,7 @@
     NSString *special_icon = @"";
     
     //  创建特殊日对象
-    YCSpecialDayTable *specialDayModel = [[[YCSpecialDayTable alloc] initWithID:special_id time:special_time title:special_title icon:special_icon] autorelease];
+    YCSpecialDayTable *specialDayModel = [[YCSpecialDayTable alloc] initWithID:special_id time:special_time title:special_title icon:special_icon];
     
     //  插入到特殊日表中
     [lxyFunctionOfDataBase insertToTabel:@"specialDayTable" withObject:specialDayModel];
@@ -285,7 +272,7 @@
     static NSString *cell_idenfier = @"cell_idenfier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_idenfier];
     if (!cell) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cell_idenfier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cell_idenfier];
     }
     cell.textLabel.text = [self.specialDayArray[indexPath.row] sd_title];
     cell.textLabel.font = [UIFont fontWithName:@"LiDeBiao-Xing-3.0" size:22.f];

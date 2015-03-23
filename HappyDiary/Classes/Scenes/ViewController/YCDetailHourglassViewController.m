@@ -33,13 +33,6 @@
 
 @implementation YCDetailHourglassViewController
 
--(void)dealloc
-{
-    [_sandModel release];
-    [_detailHourglassView release];
-    [super dealloc];
-}
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -51,7 +44,7 @@
 
 - (void)loadView
 {
-    self.detailHourglassView = [[[YCDetailHourglassView alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.detailHourglassView = [[YCDetailHourglassView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.view = _detailHourglassView;
 }
 
@@ -116,18 +109,18 @@
     //  载入数据
     NSString *image_str = @"";
     self.music = nil;
-    if ([[self.sandModel style] intValue] == 0) {
+    if ([[self.sandModel sandStyle] intValue] == 0) {
         image_str = @"shalou5";
-        self.music = [[[SZMusic alloc] initWithName:@"kiss the rain" type:@"mp3"] autorelease];
-    } else if ([[self.sandModel style] intValue] == 1) {
+        self.music = [[SZMusic alloc] initWithName:@"kiss the rain" type:@"mp3"];
+    } else if ([[self.sandModel sandStyle] intValue] == 1) {
         image_str = @"shalou1";
-        self.music = [[[SZMusic alloc] initWithName:@"卡农" type:@"mp3"] autorelease];
-    } else if ([[self.sandModel style] intValue] == 2) {
+        self.music = [[SZMusic alloc] initWithName:@"卡农" type:@"mp3"];
+    } else if ([[self.sandModel sandStyle] intValue] == 2) {
         image_str = @"shalou3";
-        self.music = [[[SZMusic alloc] initWithName:@"忧伤还是快乐" type:@"mp3"] autorelease];
-    } else if ([[self.sandModel style] intValue] == 3) {
+        self.music = [[SZMusic alloc] initWithName:@"忧伤还是快乐" type:@"mp3"];
+    } else if ([[self.sandModel sandStyle] intValue] == 3) {
         image_str = @"shalou2";
-        self.music = [[[SZMusic alloc] initWithName:@"always with me" type:@"mp3"] autorelease];
+        self.music = [[SZMusic alloc] initWithName:@"always with me" type:@"mp3"];
     }
     self.detailHourglassView.hgStyleImageView.image = [UIImage imageNamed:image_str];
     self.detailHourglassView.introduceLabel.text = self.sandModel.introduce;
@@ -154,7 +147,7 @@
     SZMusic *nowMusic = self.music;
     NSString *filePath = [[NSBundle mainBundle] pathForResource:nowMusic.name ofType:nowMusic.type];
     NSData *fileData = [NSData dataWithContentsOfFile:filePath];
-    self.avAudioPlayer = [[[AVAudioPlayer alloc] initWithData:fileData error:nil] autorelease];
+    self.avAudioPlayer = [[AVAudioPlayer alloc] initWithData:fileData error:nil];
     self.avAudioPlayer.volume = 0.8;
     self.avAudioPlayer.numberOfLoops = -1;
     isPlay = YES;
@@ -212,19 +205,19 @@
     static NSString *cell_detail = @"cell_detail";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_detail];
     if (!cell) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cell_detail] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cell_detail];
     }
     NSMutableArray *array = [[lxyDataBase shareLxyDataBase] searchAllDataFromalonePersonTableByPersonName:[self.sandModel peopleName]];
-    cell.textLabel.text = [array[indexPath.row] content];
+//    cell.textLabel.text = [array[indexPath.row] content]; // why not in arc
     cell.textLabel.textColor = [UIColor blackColor];
     cell.textLabel.font = [UIFont fontWithName:@"LiDeBiao-Xing-3.0" size:22.f];
     cell.textLabel.numberOfLines = 0;
-    cell.detailTextLabel.text = [array[indexPath.row] time];
+//    cell.detailTextLabel.text = [array[indexPath.row] time]; // why not in arc
     cell.imageView.image = [UIImage imageNamed:@"cal"];
     cell.detailTextLabel.font = [UIFont fontWithName:@"LiDeBiao-Xing-3.0" size:22.f];
     //cell.detailTextLabel.textColor = [UIColor orangeColor];
     cell.detailTextLabel.textColor = [UIColor grayColor];
-    cell.backgroundView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"fy"]] autorelease];
+    cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"fy"]];
     
     return cell;
 }
@@ -233,7 +226,7 @@
 #pragma mark Did select row
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    YCOneDetailViewController *oneDetailVC = [[[YCOneDetailViewController alloc] init] autorelease];
+    YCOneDetailViewController *oneDetailVC = [[YCOneDetailViewController alloc] init];
     //  传值
     NSMutableArray *array = [[lxyDataBase shareLxyDataBase] searchAllDataFromalonePersonTableByPersonName:[self.sandModel peopleName]];
     oneDetailVC.aloneModel = array[indexPath.row];
@@ -251,7 +244,7 @@
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         NSMutableArray *array = [[lxyDataBase shareLxyDataBase] searchAllDataFromalonePersonTableByPersonName:[self.sandModel peopleName]];
         lxyAlonePersonModel *aloneModel = array[indexPath.row];
-        [[lxyDataBase shareLxyDataBase] deleteOneAlonePersonModel:aloneModel byName:[aloneModel name]];
+//        [[lxyDataBase shareLxyDataBase] deleteOneAlonePersonModel:aloneModel byName:[aloneModel name]]; // why not in arc
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
 }
@@ -273,7 +266,7 @@
 #pragma mark 添加事件
 - (void)rightButtonAction:(UIButton *)sender
 {
-    YCWriteHourglassViewController *writeVC = [[[YCWriteHourglassViewController alloc] init] autorelease];
+    YCWriteHourglassViewController *writeVC = [[YCWriteHourglassViewController alloc] init];
     writeVC.sandModel = self.sandModel;
     [self presentViewController:writeVC animated:YES completion:nil];
 }

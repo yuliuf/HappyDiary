@@ -10,31 +10,31 @@
 
 @interface lxyPersonDataView : UIView
 
-@property (nonatomic , retain) UIButton *monthlyButton1;
+@property (nonatomic , strong) UIButton *monthlyButton1;
 
-@property (nonatomic , retain) UIButton *weeklyButton1;
+@property (nonatomic , strong) UIButton *weeklyButton1;
 
-@property (nonatomic , retain) UIButton *dailyButton1;
+@property (nonatomic , strong) UIButton *dailyButton1;
 
-@property (nonatomic , retain) UIButton *personDataButton2;
+@property (nonatomic , strong) UIButton *personDataButton2;
 
-@property (nonatomic , retain) UIImageView *imageView;
+@property (nonatomic , strong) UIImageView *imageView;
 
-@property (nonatomic , retain) UIImageView *imageViewTitle;
+@property (nonatomic , strong) UIImageView *imageViewTitle;
 
 //@property (nonatomic , retain) UIScrollView *scroller;
 
 
-@property (nonatomic, retain) UIButton *editBtn;  // 编辑按钮
-@property (nonatomic, retain) UIImageView *headerIcon; // 头像
-@property (nonatomic, retain) UITextField *name;  // 姓名
-@property (nonatomic, retain) UITextField *birthday; // 生日
-@property (nonatomic, retain) UITextView *introduce; //  个人介绍
+@property (nonatomic, strong) UIButton *editBtn;  // 编辑按钮
+@property (nonatomic, strong) UIImageView *headerIcon; // 头像
+@property (nonatomic, strong) UITextField *name;  // 姓名
+@property (nonatomic, strong) UITextField *birthday; // 生日
+@property (nonatomic, strong) UITextView *introduce; //  个人介绍
 
-@property (nonatomic , retain) UITapGestureRecognizer *tap;     //轻拍事件
-@property (nonatomic , retain) UITapGestureRecognizer *tapHeadIcon;     //给头像图片添加一个轻拍手势
+@property (nonatomic , strong) UITapGestureRecognizer *tap;     //轻拍事件
+@property (nonatomic , strong) UITapGestureRecognizer *tapHeadIcon;     //给头像图片添加一个轻拍手势
 
-@property (nonatomic , retain) UIButton *personDataBackButton;
+@property (nonatomic , strong) UIButton *personDataBackButton;
 
 
 

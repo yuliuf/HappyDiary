@@ -11,6 +11,6 @@
 
 @interface YCCreateHourglassViewController : UIViewController
 
-@property (nonatomic, retain) SZMusic *music;
+@property (nonatomic, strong) SZMusic *music;
 
 @end

@@ -25,12 +25,12 @@
 
 - (void)addAllViews
 {
-    self.contentLabel = [[[UILabel alloc] initWithFrame:CGRectMake(kMargin + 45, kMargin / 2, kWidth, kHeight)] autorelease];
+    self.contentLabel = [[UILabel alloc] initWithFrame:CGRectMake(kMargin + 45, kMargin / 2, kWidth, kHeight)];
     self.contentLabel.font = [UIFont fontWithName:@"LiDeBiao-Xing-3.0" size:19.f];
     self.contentLabel.textColor = UIColorFromRGB(0xFFAA33);
     [self addSubview:_contentLabel];
     
-    self.iconView = [[[UIImageView alloc] initWithFrame:CGRectMake(kMargin, 0, 34.3, 40)] autorelease];
+    self.iconView = [[UIImageView alloc] initWithFrame:CGRectMake(kMargin, 0, 34.3, 40)];
     [self addSubview:_iconView];
     
 //    self.yearLabel = [[UILabel alloc] initWithFrame:CGRectMake(kMargin, kMargin / 2, 20, 20)];

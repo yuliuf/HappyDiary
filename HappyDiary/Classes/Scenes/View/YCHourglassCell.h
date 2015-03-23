@@ -10,7 +10,7 @@
 
 @interface YCHourglassCell : UICollectionViewCell
 
-@property (nonatomic, retain) UIImageView *imageView;
-@property (nonatomic, retain) UILabel *label;
+@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UILabel *label;
 
 @end

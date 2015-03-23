@@ -16,20 +16,6 @@
 
 @implementation lxyDailyView
 
-- (void)dealloc
-{
-    [_searchBar release];
-    [_tableView release];
-    [_titleView release];
-    [_monthlyButton1 release];
-    [_weeklyButton1 release];
-    [_dailyButton2 release];
-    [_personDataButton1 release];
-    [_imageView release];
-    [_scroller release];
-    
-    [super dealloc];
-}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -77,15 +63,15 @@
         
         //添加背景图片
         imagePath = [[NSBundle mainBundle] pathForResource:@"eventBackGround" ofType:@"png"];
-        UIImage *img = [[[UIImage alloc] initWithContentsOfFile:imagePath] autorelease];
-        self.imageView = [[[UIImageView alloc] initWithImage:img] autorelease];
+        UIImage *img = [[UIImage alloc] initWithContentsOfFile:imagePath];
+        self.imageView = [[UIImageView alloc] initWithImage:img];
         _imageView.userInteractionEnabled = YES;
         _imageView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
         [self addSubview:_imageView];
         
         imagePath = [[NSBundle mainBundle] pathForResource:@"eventControllerTitle" ofType:@"png"];
-        UIImage *imgTitle = [[[UIImage alloc] initWithContentsOfFile:imagePath] autorelease];
-        self.imageViewTitle = [[[UIImageView alloc] initWithImage:imgTitle] autorelease];
+        UIImage *imgTitle = [[UIImage alloc] initWithContentsOfFile:imagePath];
+        self.imageViewTitle = [[UIImageView alloc] initWithImage:imgTitle];
         _imageViewTitle.userInteractionEnabled = YES;
         _imageViewTitle.frame = CGRectMake(0, 0, self.frame.size.width, 54);
         [self addSubview:_imageViewTitle];
@@ -123,13 +109,13 @@
     //自动释放池————————————————————————————————————————————————
     @autoreleasepool {
         NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"title_book" ofType:@"png"];
-        UIImage *image = [[[UIImage alloc] initWithContentsOfFile:imagePath] autorelease];
-        self.titleView = [[[UIImageView alloc] initWithImage:image] autorelease];
+        UIImage *image = [[UIImage alloc] initWithContentsOfFile:imagePath];
+        self.titleView = [[UIImageView alloc] initWithImage:image];
         _titleView.frame = CGRectMake(45, 40, 50, 50);
         [_imageView addSubview:_titleView];
         //    [_imageView release];
         
-        self.searchBar = [[[UISearchBar alloc] initWithFrame:CGRectMake(100, 50, 180, 30)] autorelease];
+        self.searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(100, 50, 180, 30)];
         self.searchBar.backgroundColor = [UIColor orangeColor];
         self.searchBar.barStyle = UIBarStyleDefault;
     }
@@ -145,11 +131,10 @@
 //    [_searchBar release];
     
     
-    self.tableView = [[[UITableView alloc] initWithFrame:CGRectMake(40, 87.5, 263.5, self.bounds.size.height - 125) style:UITableViewStylePlain] autorelease];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(40, 87.5, 263.5, self.bounds.size.height - 125) style:UITableViewStylePlain];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(40, 87.5, 263.5, self.bounds.size.height - 125)];
     imageView.image = [UIImage imageNamed:@"fy"];
     self.tableView.backgroundView = imageView;
-    [imageView release];
     [_imageView addSubview:_tableView];
     
     //添加返回按钮
@@ -158,7 +143,7 @@
         self.dailyBackButton = [UIButton buttonWithType:UIButtonTypeSystem];
         [self.dailyBackButton setFrame:CGRectMake(0, 5, 40, 40)];
         NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"diary_out" ofType:@"png"];
-        UIImage *image = [[[UIImage alloc] initWithContentsOfFile:imagePath] autorelease];
+        UIImage *image = [[UIImage alloc] initWithContentsOfFile:imagePath];
         [self.dailyBackButton setBackgroundImage:image forState:UIControlStateNormal];
         [self addSubview:self.dailyBackButton];
     }

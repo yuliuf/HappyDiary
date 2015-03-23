@@ -15,7 +15,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         [self addAllViews];
-        self.tuyaView = [[[LYTuyaView alloc] initWithFrame:Rect(0, 0, frame.size.width, frame.size.height - 20)] autorelease];
+        self.tuyaView = [[LYTuyaView alloc] initWithFrame:Rect(0, 0, frame.size.width, frame.size.height - 20)];
         self.tuyaView.layer.borderColor = [[UIColor redColor] CGColor];
         self.tuyaView.layer.borderWidth = .9;
         self.userInteractionEnabled = YES;

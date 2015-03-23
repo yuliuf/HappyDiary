@@ -10,14 +10,6 @@
 
 @implementation YCSpecialDayTable
 
-- (void)dealloc
-{
-    [_sd_icon release];
-    [_sd_id release];
-    [_sd_time release];
-    [_sd_title release];
-    [super dealloc];
-}
 
 - (instancetype)initWithID:(NSString *)ID time:(NSString *)time title:(NSString *)title icon:(NSString *)icon
 {

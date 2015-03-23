@@ -10,7 +10,7 @@
 
 @interface LYToolBarView : UIScrollView
 
-@property (nonatomic, retain) NSArray *toolArray;
+@property (nonatomic, strong) NSArray *toolArray;
 
 #pragma mark 用数组初始化工具条
 - (id)initWithFrame:(CGRect)frame withArray:(NSArray *)Array;

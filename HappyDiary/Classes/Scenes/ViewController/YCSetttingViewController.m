@@ -18,7 +18,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-          self.tabBarItem = [[[UITabBarItem alloc] initWithTitle:@"设置" image:[UIImage imageNamed:@"diary"] tag:4] autorelease];
+          self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"设置" image:[UIImage imageNamed:@"diary"] tag:4];
     }
     return self;
 }

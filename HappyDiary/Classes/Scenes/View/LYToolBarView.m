@@ -66,7 +66,6 @@
         btn.layer.cornerRadius = 6;
         [btn setBackgroundImage:[UIImage imageNamed:toolArray[i]] forState:UIControlStateNormal];
         [self addSubview:btn];
-        [btn release];
     }
     
 }

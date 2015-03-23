@@ -32,10 +32,10 @@
     NSString *selector;
 }
 
-@property (nonatomic, retain) YCHourglassView *hourglassView;
-@property (nonatomic, retain) YCCreateHourglassView *createHourglassView;
-@property (nonatomic, retain) YCDeleteHourglassView *deleteHourglassView;
-@property (nonatomic, retain) NSArray *hourglassModelArray;
+@property (nonatomic, strong) YCHourglassView *hourglassView;
+@property (nonatomic, strong) YCCreateHourglassView *createHourglassView;
+@property (nonatomic, strong) YCDeleteHourglassView *deleteHourglassView;
+@property (nonatomic, strong) NSArray *hourglassModelArray;
 
 @end
 
@@ -43,27 +43,19 @@ NSInteger indexCell = 0;
 
 @implementation YCHourglassViewController
 
-- (void)dealloc
-{
-    [_createHourglassView release];
-    [_deleteHourglassView release];
-    [_hourglassModelArray release];
-    [_hourglassView release];
-    [super dealloc];
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.tabBarItem = [[[UITabBarItem alloc] initWithTitle:@"沙漏" image:[UIImage imageNamed:@"diary"] tag:3] autorelease];
+        self.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"沙漏" image:[UIImage imageNamed:@"diary"] tag:3];
     }
     return self;
 }
 
 - (void)loadView
 {
-    self.hourglassView = [[[YCHourglassView alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.hourglassView = [[YCHourglassView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.view = _hourglassView;
 }
 
@@ -77,7 +69,7 @@ NSInteger indexCell = 0;
     //self.createHourglassView = [[[YCCreateHourglassView alloc] initWithFrame:CGRectMake(70, 30, 200, 200)] autorelease];
     
     //  删除页面
-    self.deleteHourglassView = [[[YCDeleteHourglassView alloc] initWithFrame:CGRectMake(70, 30, 200, 200)] autorelease];
+    self.deleteHourglassView = [[YCDeleteHourglassView alloc] initWithFrame:CGRectMake(70, 30, 200, 200)];
     
     self.hourglassView.collectionView.backgroundColor = UIColorFromRGB(0xFFFFFF);
     
@@ -126,7 +118,7 @@ NSInteger indexCell = 0;
 {
     YCHourglassCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"cell_collection" forIndexPath:indexPath];
     if (!cell) {
-        cell = [[[YCHourglassCell alloc] initWithFrame:CGRectMake(0, 0, 10, 10)] autorelease];
+        cell = [[YCHourglassCell alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
     }
     NSArray *array = [lxyFunctionOfDataBase searchAllDataInTable:@"sandTimerTable"];
     cell.label.text = [array[indexPath.row] peopleName];
@@ -137,15 +129,14 @@ NSInteger indexCell = 0;
     UIImageView *backImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     backImageView.image = [UIImage imageNamed:@"blue"];
     cell.backgroundView = backImageView;
-    [backImageView release];
     NSString *image_str = @"";
-    if ([[array[indexPath.row] style] intValue] == 0) {
+    if ([[array[indexPath.row] sandStyle] intValue] == 0) {
         image_str = @"shalou5";
-    } else if ([[array[indexPath.row] style] intValue] == 1) {
+    } else if ([[array[indexPath.row] sandStyle] intValue] == 1) {
         image_str = @"shalou1";
-    } else if ([[array[indexPath.row] style] intValue] == 2) {
+    } else if ([[array[indexPath.row] sandStyle] intValue] == 2) {
         image_str = @"shalou3";
-    } else if ([[array[indexPath.row] style] intValue] == 3) {
+    } else if ([[array[indexPath.row] sandStyle] intValue] == 3) {
         image_str = @"shalou2";
     }
     cell.imageView.image = [UIImage imageNamed:image_str];
@@ -186,7 +177,7 @@ NSInteger indexCell = 0;
 #pragma mark 点击cell
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    YCDetailHourglassViewController *detailHourglassVC = [[[YCDetailHourglassViewController alloc] init] autorelease];
+    YCDetailHourglassViewController *detailHourglassVC = [[YCDetailHourglassViewController alloc] init];
     NSMutableArray *array = [lxyFunctionOfDataBase searchAllDataInTable:@"sandTimerTable"];
     detailHourglassVC.sandModel = array[indexPath.row];
     detailHourglassVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
@@ -221,7 +212,7 @@ NSInteger indexCell = 0;
     [self.createHourglassView.cancelButton addTarget:self action:@selector(cancelButtonAction:) forControlEvents:UIControlEventTouchUpInside];
      */
     
-    YCCreateHourglassViewController *createHourglassVC = [[[YCCreateHourglassViewController alloc] init] autorelease];
+    YCCreateHourglassViewController *createHourglassVC = [[YCCreateHourglassViewController alloc] init];
     createHourglassVC.modalTransitionStyle = UIModalPresentationPageSheet;
     [self presentViewController:createHourglassVC animated:YES completion:nil];
 }
@@ -305,7 +296,7 @@ NSInteger indexCell = 0;
     
     //  创建沙漏模型
     
-    lxySandTimerModel *sandTimerModel = [[[lxySandTimerModel alloc] init] autorelease];
+    lxySandTimerModel *sandTimerModel = [[lxySandTimerModel alloc] init];
     
     /*
     //  创建沙漏模型
@@ -327,11 +318,11 @@ NSInteger indexCell = 0;
     
      NSMutableArray *array = [lxyFunctionOfDataBase searchAllDataInTable:@"sandTimerTable"];
      sandTimerModel.ID = [NSString stringWithFormat:@"%d", array.count];
-     sandTimerModel.style = @"005";
+     sandTimerModel.sandStyle = @"005";
      sandTimerModel.backGroundMusic = @"003";
      sandTimerModel.peopleName = string;
      //  创建沙漏模型的时间
-     NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
      [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
      NSString *time = [dateFormatter stringFromDate:[NSDate date]];
      sandTimerModel.time = time;
@@ -434,7 +425,6 @@ NSInteger indexCell = 0;
                               message:@"You need to be connected to the internet to use this feature."
                               delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
-        [alert release];
     } else {
         /*
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"Network Connection success" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];

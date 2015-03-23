@@ -12,20 +12,14 @@
 //#import "lxyDataBase.h"
 
 @interface YCOneDetailViewController ()
-@property (nonatomic, retain) YCOneDetailView *oneDetailView;
-@property (nonatomic, retain) NSArray *imageArray;
+@property (nonatomic, strong) YCOneDetailView *oneDetailView;
+@property (nonatomic, strong) NSArray *imageArray;
 @property (nonatomic, assign) NSInteger clickCount;
 @property (nonatomic, copy) NSString *imagePath;
 @end
 
 @implementation YCOneDetailViewController
 
--(void)dealloc
-{
-    [_oneDetailView release];
-    [_aloneModel release];
-    [super dealloc];
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -38,7 +32,7 @@
 
 - (void)loadView
 {
-    self.oneDetailView = [[[YCOneDetailView alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.oneDetailView = [[YCOneDetailView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.view = self.oneDetailView;
 }
 
@@ -52,20 +46,17 @@
     self.oneDetailView.textView.text = [self.aloneModel content];
     UIImage *image = [[UIImage alloc] initWithContentsOfFile:self.aloneModel.backGroundImage];
     self.oneDetailView.bgImageView.image = image;
-    [image release];
     
     //  rightBar
     UIBarButtonItem *rightBar = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStyleDone target:self action:@selector(rightBarAction:)];
     [rightBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"LiDeBiao-Xing-3.0" size:22.f], NSFontAttributeName, UIColorFromRGB(0xB94FFF), NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
     self.navigationItem.rightBarButtonItem = rightBar;
-    [rightBar release];
     
     //  leftBar
     NSString *string = [self.aloneModel name];
     UIBarButtonItem *leftBar = [[UIBarButtonItem alloc] initWithTitle:string style:UIBarButtonItemStyleDone target:self action:@selector(leftBarAction:)];
     [leftBar setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont fontWithName:@"LiDeBiao-Xing-3.0" size:22.f], NSFontAttributeName, UIColorFromRGB(0xFF8800), NSForegroundColorAttributeName, nil] forState:UIControlStateNormal];
     self.navigationItem.leftBarButtonItem = leftBar;
-    [leftBar release];
     
     //  deleteButton
     [self.oneDetailView.deleteButton addTarget:self action:@selector(deleteButtonAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -92,7 +83,6 @@
         self.imagePath = [[NSBundle mainBundle] pathForResource:_imageArray[i] ofType:@"png"];
         UIImage *image = [[UIImage alloc] initWithContentsOfFile:_imagePath];
         self.oneDetailView.bgImageView.image = image;
-        [image release];
     }
 }
 

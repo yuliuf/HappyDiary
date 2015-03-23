@@ -11,10 +11,10 @@
 @interface lxyDiaryModel : NSObject
 
 @property (nonatomic , assign) NSInteger diary_id;
-@property (nonatomic , retain) NSString *diary_icon;
-@property (nonatomic , retain) NSString *diary_title;
-@property (nonatomic , retain) NSString *diary_content;
-@property (nonatomic , retain) NSString *diary_time;
+@property (nonatomic , strong) NSString *diary_icon;
+@property (nonatomic , strong) NSString *diary_title;
+@property (nonatomic , strong) NSString *diary_content;
+@property (nonatomic , strong) NSString *diary_time;
 
 - (instancetype)initWithID:(NSInteger)ID
                    andIcon:(NSString *)icon

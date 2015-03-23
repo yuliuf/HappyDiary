@@ -10,18 +10,18 @@
 
 @interface YCCreateHourglassView : UIView
 
-@property (nonatomic, retain) UILabel *headerLable;
-@property (nonatomic, retain) UISegmentedControl *segment;
-@property (nonatomic, retain) UIImageView *imageView;
-@property (nonatomic, retain) UILabel *label;
-@property (nonatomic, retain) UITextField *textField;
-@property (nonatomic, retain) UIButton *saveButton;
-@property (nonatomic, retain) UIButton *cancelButton;
-@property (nonatomic, retain) UITextView *textView;
+@property (nonatomic, strong) UILabel *headerLable;
+@property (nonatomic, strong) UISegmentedControl *segment;
+@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UILabel *label;
+@property (nonatomic, strong) UITextField *textField;
+@property (nonatomic, strong) UIButton *saveButton;
+@property (nonatomic, strong) UIButton *cancelButton;
+@property (nonatomic, strong) UITextView *textView;
 
-@property (nonatomic, retain) UIButton *playButton;
-@property (nonatomic, retain) UISlider *volumeSlider;
-@property (nonatomic, retain) UIImageView *backImageView;
-@property (nonatomic, retain) UIButton *voice;
+@property (nonatomic, strong) UIButton *playButton;
+@property (nonatomic, strong) UISlider *volumeSlider;
+@property (nonatomic, strong) UIImageView *backImageView;
+@property (nonatomic, strong) UIButton *voice;
 
 @end

@@ -12,15 +12,6 @@
 
 @implementation YCHourglassView
 
-- (void)dealloc
-{
-    [_addButton release];
-    [_deleteButton release];
-    [_nameLabel release];
-    [_collectionView release];
-    [_flowLayout release];
-    [super dealloc];
-}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -45,24 +36,22 @@
     [self addSubview:_nameLabel];
      */
     
-    self.imageView = [[[UIImageView alloc] initWithFrame:self.bounds] autorelease];
+    self.imageView = [[UIImageView alloc] initWithFrame:self.bounds];
     _imageView.image = [UIImage imageNamed:@"blueSky"];
     [self addSubview:_imageView];
-    [_imageView release];
     
     //  初始化flowLayout
-    self.flowLayout = [[[UICollectionViewFlowLayout alloc] init] autorelease];
+    self.flowLayout = [[UICollectionViewFlowLayout alloc] init];
     self.flowLayout.itemSize = CGSizeMake(100, 100);
     self.flowLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
     
     //  初始化collectionView
-    self.collectionView = [[[UICollectionView alloc] initWithFrame:CGRectMake(40, 195, 240, (self.bounds.size.height - 360) * self.bounds.size.height / 568) collectionViewLayout:_flowLayout] autorelease];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(40, 195, 240, (self.bounds.size.height - 360) * self.bounds.size.height / 568) collectionViewLayout:_flowLayout];
     self.collectionView.showsHorizontalScrollIndicator = NO;
     self.collectionView.showsVerticalScrollIndicator = NO;
     UIImageView *backImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 240, 220)];
     backImageView.image = [UIImage imageNamed:@"blue"];
     self.collectionView.backgroundView = backImageView;
-    [backImageView release];
     [self addSubview:_collectionView];
     
     /*

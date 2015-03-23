@@ -10,27 +10,27 @@
 
 @interface lxyDailyView : UIView
 
-@property (nonatomic , retain) UIButton *monthlyButton1;
+@property (nonatomic , strong) UIButton *monthlyButton1;
 
-@property (nonatomic , retain) UIButton *weeklyButton1;
+@property (nonatomic , strong) UIButton *weeklyButton1;
 
-@property (nonatomic , retain) UIButton *dailyButton2;
+@property (nonatomic , strong) UIButton *dailyButton2;
 
-@property (nonatomic , retain) UIButton *personDataButton1;
+@property (nonatomic , strong) UIButton *personDataButton1;
 
-@property (nonatomic , retain) UIImageView *imageView;
+@property (nonatomic , strong) UIImageView *imageView;
 
-@property (nonatomic , retain) UIImageView *imageViewTitle;
+@property (nonatomic , strong) UIImageView *imageViewTitle;
 
-@property (nonatomic , retain) UIScrollView *scroller;
-
-
+@property (nonatomic , strong) UIScrollView *scroller;
 
 
-@property (nonatomic, retain) UITableView *tableView;
-@property (nonatomic, retain) UISearchBar *searchBar;
-@property (nonatomic, retain) UIImageView *titleView;
 
-@property (nonatomic , retain) UIButton *dailyBackButton;   //返回按钮
+
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UISearchBar *searchBar;
+@property (nonatomic, strong) UIImageView *titleView;
+
+@property (nonatomic , strong) UIButton *dailyBackButton;   //返回按钮
 
 @end

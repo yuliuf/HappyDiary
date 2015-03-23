@@ -24,7 +24,7 @@
 
 - (void)addAllViews
 {
-    self.showStatusBarLabel = [[[UILabel alloc] initWithFrame:Rect(0, 0, 320, 20)] autorelease];
+    self.showStatusBarLabel = [[UILabel alloc] initWithFrame:Rect(0, 0, 320, 20)];
     self.backgroundColor = [UIColor yellowColor];
     [self addSubview:_showStatusBarLabel];
     

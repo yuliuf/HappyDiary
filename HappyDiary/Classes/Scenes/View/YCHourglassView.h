@@ -10,11 +10,11 @@
 
 @interface YCHourglassView : UIView
 
-@property (nonatomic, retain) UILabel *nameLabel;
-@property (nonatomic, retain) UICollectionView *collectionView;
-@property (nonatomic, retain) UICollectionViewFlowLayout *flowLayout;
-@property (nonatomic, retain) UIButton *addButton;
-@property (nonatomic, retain) UIButton *deleteButton;
-@property (nonatomic, retain) UIImageView *imageView;
+@property (nonatomic, strong) UILabel *nameLabel;
+@property (nonatomic, strong) UICollectionView *collectionView;
+@property (nonatomic, strong) UICollectionViewFlowLayout *flowLayout;
+@property (nonatomic, strong) UIButton *addButton;
+@property (nonatomic, strong) UIButton *deleteButton;
+@property (nonatomic, strong) UIImageView *imageView;
 
 @end

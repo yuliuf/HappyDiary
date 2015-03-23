@@ -10,22 +10,6 @@
 #define TXT_FRAME Rect(40, 93, ScreenWidth-80, ScreenHeight-160)
 
 @implementation LYDiaryView
-- (void)dealloc
-{
-    [_weatherBtn release];
-    [_timeLabel release];
-    [_toolButton release];
-    [_weekLabel release];
-    [_xinzhi release];
-    [_bookImageView release];
-    [_titleImageView release];
-    [_toolBarView release];
-    [_title release];
-    [_savaButton release];
-    [_rightToorBar release];
-    
-    [super dealloc];
-}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -42,20 +26,20 @@
     
     //添加背景图书图片
     UIImage *bookImage = [UIImage imageNamed:@"book.png"];
-    self.bookImageView = [[[UIImageView alloc] initWithImage:bookImage] autorelease];
+    self.bookImageView = [[UIImageView alloc] initWithImage:bookImage];
     _bookImageView.userInteractionEnabled = YES;
     _bookImageView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
     [self addSubview:_bookImageView];
     
     //添加背景title图片
     UIImage *titleImage = [UIImage imageNamed:@"title.png"];
-    self.titleImageView = [[[UIImageView alloc] initWithImage:titleImage] autorelease];
+    self.titleImageView = [[UIImageView alloc] initWithImage:titleImage];
     _titleImageView.userInteractionEnabled = YES;
     _titleImageView.frame = CGRectMake(0, 0, self.frame.size.width, 54);
     [self addSubview:_titleImageView];
 
     //  添加信纸
-    self.xinzhi = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"deco_bg_popup_check15"]] autorelease];
+    self.xinzhi = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"deco_bg_popup_check15"]];
     self.xinzhi.frame = Rect(20, 40, ScreenWidth - 30, ScreenHeight - 60);
     self.xinzhi.layer.cornerRadius = 5;
 //    self.xinzhi.backgroundColor = myPink;
@@ -63,7 +47,7 @@
     [self addSubview:self.xinzhi];
     
     //  标题底色label
-    UIView *view = [[[UIView alloc] initWithFrame:Rect(20, 50, ScreenWidth - 20 - 15, 30)] autorelease];
+    UIView *view = [[UIView alloc] initWithFrame:Rect(20, 50, ScreenWidth - 20 - 15, 30)];
     view.backgroundColor = [UIColor whiteColor];
     view.alpha = 0.8f;
     [self addSubview:view];
@@ -76,7 +60,7 @@
     [self addSubview:self.weatherBtn];
     
     // 标题
-    self.title = [[[UITextField alloc] initWithFrame:Rect(80, kMargin + 3, 150, 25)] autorelease];
+    self.title = [[UITextField alloc] initWithFrame:Rect(80, kMargin + 3, 150, 25)];
     self.title.placeholder = @"标题";
     self.title.font = [UIFont systemFontOfSize:20.f];
 //    self.title.borderStyle = UITextBorderStyleRoundedRect;
@@ -90,12 +74,12 @@
     [self addSubview:_toolButton];
     
     // 左侧工具栏
-    self.toolBarView = [[[LYToolBarView alloc] initWithFrame:Rect(0, 150, 54, 300) withArray:[NSArray array]] autorelease];
+    self.toolBarView = [[LYToolBarView alloc] initWithFrame:Rect(0, 150, 54, 300) withArray:[NSArray array]];
     [self addSubview:_toolBarView];
     _toolBarView.alpha = 0.f;
     
     //  右侧工具栏
-    self.rightToorBar = [[[UITableView alloc] initWithFrame:Rect(ScreenWidth - 40, 100, 40, 350) style:UITableViewStylePlain] autorelease];
+    self.rightToorBar = [[UITableView alloc] initWithFrame:Rect(ScreenWidth - 40, 100, 40, 350) style:UITableViewStylePlain];
     [self addSubview:_rightToorBar];
     _rightToorBar.showsVerticalScrollIndicator = NO;
     self.rightToorBar.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -140,21 +124,21 @@
 - (UITapGestureRecognizer *)tapGR
 {
     if (_tapGR == nil) {
-        _tapGR = [[[UITapGestureRecognizer alloc] init] autorelease];
+        _tapGR = [[UITapGestureRecognizer alloc] init];
         //  讲手势添加到view上
         [_xinzhi addGestureRecognizer:_tapGR];
         
     }
     
     //  返回手势
-    return [_tapGR retain];
+    return _tapGR;
     
 }
 
 - (UILongPressGestureRecognizer *)longPressGR
 {
     if (_longPressGR == nil) {
-        _longPressGR = [[UILongPressGestureRecognizer new] autorelease];
+        _longPressGR = [UILongPressGestureRecognizer new];
         [_rightToorBar addGestureRecognizer:_longPressGR];
     }
     return _longPressGR;

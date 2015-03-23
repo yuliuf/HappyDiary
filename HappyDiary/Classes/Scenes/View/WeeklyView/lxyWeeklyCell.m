@@ -14,17 +14,6 @@
 
 @implementation lxyWeeklyCell
 
-- (void)dealloc
-{
-    [_titleIcon release];
-    [_titleLabel release];
-    [_titleDay release];
-    
-    [_contentImageView release];
-    
-    
-    [super dealloc];
-}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -42,14 +31,14 @@
 - (void)addAllViews
 {
     //titleIcon
-    self.titleIcon = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ICONBORDER, ICONBORDER)] autorelease];
+    self.titleIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, ICONBORDER, ICONBORDER)];
 //    _titleIcon.backgroundColor = [UIColor redColor];
 //    _titleIcon.alpha = ALPHA;
     [self addSubview:_titleIcon];
     
     
     //titleLabel
-    self.titleLabel = [[[UILabel alloc] initWithFrame:CGRectMake(_titleIcon.frame.origin.x + ICONBORDER, _titleIcon.frame.origin.y, self.frame.size.width - ICONBORDER * 2, ICONBORDER)] autorelease];
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(_titleIcon.frame.origin.x + ICONBORDER, _titleIcon.frame.origin.y, self.frame.size.width - ICONBORDER * 2, ICONBORDER)];
     _titleLabel.font = [UIFont fontWithName:@"LiDeBiao-Xing-3.0" size:5.f];
 //    _titleLabel.alpha = ALPHA;
     _titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -57,7 +46,7 @@
     
     
     //titleDay
-    self.titleDay = [[[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width - ICONBORDER, _titleIcon.frame.origin.y, ICONBORDER, ICONBORDER)] autorelease];
+    self.titleDay = [[UILabel alloc] initWithFrame:CGRectMake(self.frame.size.width - ICONBORDER, _titleIcon.frame.origin.y, ICONBORDER, ICONBORDER)];
 //    _titleDay.backgroundColor = [UIColor magentaColor];
     _titleDay.font = [UIFont fontWithName:@"LiDeBiao-Xing-3.0" size:5.f];
 //    _titleDay.alpha = ALPHA;
@@ -65,7 +54,7 @@
     
     
     //contentImageView
-    self.contentImageView = [[[UIImageView alloc] initWithFrame:CGRectMake(KONGBAI, ICONBORDER, self.frame.size.width - 2 * KONGBAI, self.frame.size.height - ICONBORDER - KONGBAI)] autorelease];
+    self.contentImageView = [[UIImageView alloc] initWithFrame:CGRectMake(KONGBAI, ICONBORDER, self.frame.size.width - 2 * KONGBAI, self.frame.size.height - ICONBORDER - KONGBAI)];
     [self addSubview:_contentImageView];
 }
 

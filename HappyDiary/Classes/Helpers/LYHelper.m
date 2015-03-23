@@ -13,7 +13,7 @@
 #pragma mark 获取当前时间
 +(NSString *)getCurrentTime
 {
-    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSString *time = [dateFormatter stringFromDate:[NSDate date]];
     return time;

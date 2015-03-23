@@ -21,19 +21,14 @@
     CGFloat voiceValue;
 }
 
-@property (nonatomic, retain) YCCreateHourglassView *createHourglassView;
+@property (nonatomic, strong) YCCreateHourglassView *createHourglassView;
 
-@property (nonatomic, retain) AVAudioPlayer *avAudioPlayer;
+@property (nonatomic, strong) AVAudioPlayer *avAudioPlayer;
 
 @end
 
 @implementation YCCreateHourglassViewController
 
-- (void)dealloc
-{
-    [_createHourglassView release];
-    [super dealloc];
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -46,7 +41,7 @@
 
 - (void)loadView
 {
-    self.createHourglassView = [[[YCCreateHourglassView alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.createHourglassView = [[YCCreateHourglassView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.view = _createHourglassView;
 }
 
@@ -72,24 +67,21 @@
     [self.createHourglassView.playButton addTarget:self action:@selector(playButton) forControlEvents:UIControlEventTouchUpInside];
     [self.createHourglassView.volumeSlider addTarget:self action:@selector(volumeSlider:) forControlEvents:UIControlEventValueChanged];
     [self.createHourglassView.voice addTarget:self action:@selector(voiceAction:) forControlEvents:UIControlEventTouchUpInside];
-    self.music = [[[SZMusic alloc] initWithName:@"kiss the rain" type:@"mp3"] autorelease];
+    self.music = [[SZMusic alloc] initWithName:@"kiss the rain" type:@"mp3"];
     [self loadMusic];
     
     //  滑动手势
     UISwipeGestureRecognizer *swipGR1 = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipGR1Action:)];
     swipGR1.direction = UISwipeGestureRecognizerDirectionLeft;
     [self.view addGestureRecognizer:swipGR1];
-    [swipGR1 release];
     
     UISwipeGestureRecognizer *swipGR2 = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipGR2Action:)];
     swipGR2.direction = UISwipeGestureRecognizerDirectionRight;
     [self.view addGestureRecognizer:swipGR2];
-    [swipGR2 release];
     
     //  轻点手势
     UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGRAction:)];
     [self.view addGestureRecognizer:tapGR];
-    [tapGR release];
 }
 
 
@@ -107,7 +99,7 @@
     SZMusic *nowMusic = self.music;
     NSString *filePath = [[NSBundle mainBundle] pathForResource:nowMusic.name ofType:nowMusic.type];
     NSData *fileData = [NSData dataWithContentsOfFile:filePath];
-    self.avAudioPlayer = [[[AVAudioPlayer alloc] initWithData:fileData error:nil] autorelease] ;
+    self.avAudioPlayer = [[AVAudioPlayer alloc] initWithData:fileData error:nil] ;
     self.avAudioPlayer.volume = 0.8;
     self.avAudioPlayer.numberOfLoops = -1;
     isPlay = YES;
@@ -168,13 +160,13 @@
     //  创建沙漏模型
     lxySandTimerModel *sandTimerModel = [[lxySandTimerModel alloc] init];
     int index = self.createHourglassView.segment.selectedSegmentIndex;
-    sandTimerModel.style = [NSString stringWithFormat:@"%d", index];
+    sandTimerModel.sandStyle = [NSString stringWithFormat:@"%d", index];
     sandTimerModel.backGroundMusic = [NSString stringWithFormat:@"%d", index];
     sandTimerModel.peopleName = string;
     sandTimerModel.introduce = introduce;
     
     //  创建沙漏模型的时间
-    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSString *time = [dateFormatter stringFromDate:[NSDate date]];
     sandTimerModel.time = time;
@@ -186,7 +178,6 @@
     //  创建单个沙漏模型表
     [[lxyDataBase shareLxyDataBase] createTableWithPeopleNameForTableName:string];
     
-    [sandTimerModel release];
     
     //  推出创建页面
     [self.avAudioPlayer stop];
@@ -233,22 +224,22 @@
     if (self.createHourglassView.segment.selectedSegmentIndex == 0) {
         [self.avAudioPlayer stop];
         self.createHourglassView.imageView.image = [UIImage imageNamed:@"shalou5"];
-        self.music = [[[SZMusic alloc] initWithName:@"kiss the rain" type:@"mp3"] autorelease];
+        self.music = [[SZMusic alloc] initWithName:@"kiss the rain" type:@"mp3"];
         [self loadMusic];
     } else if (self.createHourglassView.segment.selectedSegmentIndex == 1) {
         self.createHourglassView.imageView.image = [UIImage imageNamed:@"shalou1"];
         [self.avAudioPlayer stop];
-        self.music = [[[SZMusic alloc] initWithName:@"卡农" type:@"mp3"] autorelease];
+        self.music = [[SZMusic alloc] initWithName:@"卡农" type:@"mp3"];
         [self loadMusic];
     } else if (self.createHourglassView.segment.selectedSegmentIndex == 2) {
         self.createHourglassView.imageView.image = [UIImage imageNamed:@"shalou3"];
         [self.avAudioPlayer stop];
-        self.music = [[[SZMusic alloc] initWithName:@"忧伤还是快乐" type:@"mp3"] autorelease];
+        self.music = [[SZMusic alloc] initWithName:@"忧伤还是快乐" type:@"mp3"];
         [self loadMusic];
     } else if (self.createHourglassView.segment.selectedSegmentIndex == 3) {
         self.createHourglassView.imageView.image = [UIImage imageNamed:@"shalou2"];
         [self.avAudioPlayer stop];
-        self.music = [[[SZMusic alloc] initWithName:@"always with me" type:@"mp3"] autorelease];
+        self.music = [[SZMusic alloc] initWithName:@"always with me" type:@"mp3"];
         [self loadMusic];
     }
 }

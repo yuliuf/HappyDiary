@@ -10,16 +10,16 @@
 
 @interface YCSpecialDayViewController : UIViewController
 
-@property (nonatomic, retain) UIView *contentView;
+@property (nonatomic, strong) UIView *contentView;
 
-@property (nonatomic, retain) UILabel *detailLabel;
-@property (nonatomic, retain) UILabel *timeLabel;
-@property (nonatomic, retain) UITextView *detailTextView;
-@property (nonatomic, retain) UITextField *timeTextField;
-@property (nonatomic, retain) UIButton *saveButton;
-@property (nonatomic, retain) UIButton *cancleButton;
+@property (nonatomic, strong) UILabel *detailLabel;
+@property (nonatomic, strong) UILabel *timeLabel;
+@property (nonatomic, strong) UITextView *detailTextView;
+@property (nonatomic, strong) UITextField *timeTextField;
+@property (nonatomic, strong) UIButton *saveButton;
+@property (nonatomic, strong) UIButton *cancleButton;
 
-@property (nonatomic, retain) UIButton *rightButton;
-@property (nonatomic, retain) UIButton *leftButton;
+@property (nonatomic, strong) UIButton *rightButton;
+@property (nonatomic, strong) UIButton *leftButton;
 
 @end

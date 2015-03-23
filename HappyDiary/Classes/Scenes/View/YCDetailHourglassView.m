@@ -10,14 +10,6 @@
 
 @implementation YCDetailHourglassView
 
-- (void)dealloc
-{
-    [_backImageView release];
-    [_hgStyleImageView release];
-    [_introduceLabel release];
-    [_tableView release];
-    [super dealloc];
-}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -30,25 +22,25 @@
 
 - (void)addAllViews
 {
-    self.backImageView = [[[UIImageView alloc] initWithFrame:self.bounds] autorelease];
+    self.backImageView = [[UIImageView alloc] initWithFrame:self.bounds];
     NSLog(@"bounds:%@", NSStringFromCGRect(self.bounds));
     _backImageView.image = [UIImage imageNamed:@"blueSky"];
     [self addSubview:_backImageView];
 //    [_backImageView release];
     
-    self.hgStyleImageView = [[[UIImageView alloc] initWithFrame:Rect(0, 50, 100, 100)] autorelease];
+    self.hgStyleImageView = [[UIImageView alloc] initWithFrame:Rect(0, 50, 100, 100)];
     //_hgStyleImageView.backgroundColor = myYellow;
     _hgStyleImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self addSubview:_hgStyleImageView];
 //    [_hgStyleImageView release];
     
-    self.introduceLabel = [[[UILabel alloc] initWithFrame:Rect(MaxX(_hgStyleImageView.frame) - 10, MinY(_hgStyleImageView.frame), 170, Height(_hgStyleImageView.frame))] autorelease];
+    self.introduceLabel = [[UILabel alloc] initWithFrame:Rect(MaxX(_hgStyleImageView.frame) - 10, MinY(_hgStyleImageView.frame), 170, Height(_hgStyleImageView.frame))];
     self.introduceLabel.numberOfLines = 0;
     [self addSubview:_introduceLabel];
     
-    self.tableView = [[[UITableView alloc] initWithFrame:Rect(10, MaxY(_hgStyleImageView.frame) + 10, ScreenWidth - 20 , ScreenHeight - Height(_hgStyleImageView.frame) - 74) style:UITableViewStylePlain] autorelease];
+    self.tableView = [[UITableView alloc] initWithFrame:Rect(10, MaxY(_hgStyleImageView.frame) + 10, ScreenWidth - 20 , ScreenHeight - Height(_hgStyleImageView.frame) - 74) style:UITableViewStylePlain];
 
-    _tableView.backgroundView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"fy"]] autorelease];
+    _tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"fy"]];
     self.tableView.layer.cornerRadius = 5;
     [self addSubview:_tableView];
 //    [_tableView release];

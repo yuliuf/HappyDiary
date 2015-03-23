@@ -13,7 +13,7 @@
 //@property (nonatomic , retain) UIImageView *bookImageView;
 //@property (nonatomic , retain) UIImageView *titleImageView;
 
-@property (nonatomic, assign) UITapGestureRecognizer *doubleTapGR;
-@property (nonatomic, retain) UILabel *showStatusBarLabel;
+@property (nonatomic, strong) UITapGestureRecognizer *doubleTapGR;
+@property (nonatomic, strong) UILabel *showStatusBarLabel;
 
 @end

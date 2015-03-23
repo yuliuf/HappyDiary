@@ -21,18 +21,6 @@
 
 @implementation lxyMonthlyView
 
-- (void)dealloc
-{
-    [_monthlyButton2 release];
-    [_weeklyButton1 release];
-    [_dailyButton1 release];
-    [_personDataButton1 release];
-    [_imageView release];
-    [_imageViewTitle release];
-    [_scroller release];
-    
-    [super dealloc];
-}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -62,16 +50,16 @@
     @autoreleasepool {
         //设置每个button的背景图片
         NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"menu_monthly_on" ofType:@"png"];
-        UIImage *image = [[[UIImage alloc] initWithContentsOfFile:imagePath] autorelease];
+        UIImage *image = [[UIImage alloc] initWithContentsOfFile:imagePath];
         [_monthlyButton2 setBackgroundImage:image forState:UIControlStateNormal];
         imagePath = [[NSBundle mainBundle] pathForResource:@"menu_weekly_off" ofType:@"png"];
-        image = [[[UIImage alloc] initWithContentsOfFile:imagePath] autorelease];
+        image = [[UIImage alloc] initWithContentsOfFile:imagePath];
         [_weeklyButton1 setBackgroundImage:image forState:UIControlStateNormal];
         imagePath = [[NSBundle mainBundle] pathForResource:@"menu_daily_off" ofType:@"png"];
-        image = [[[UIImage alloc] initWithContentsOfFile:imagePath] autorelease];
+        image = [[UIImage alloc] initWithContentsOfFile:imagePath];
         [_dailyButton1 setBackgroundImage:image forState:UIControlStateNormal];
         imagePath = [[NSBundle mainBundle] pathForResource:@"menu_personal_off" ofType:@"png"];
-        image = [[[UIImage alloc] initWithContentsOfFile:imagePath] autorelease];
+        image = [[UIImage alloc] initWithContentsOfFile:imagePath];
         [_personDataButton1 setBackgroundImage:image forState:UIControlStateNormal];
     }
     
@@ -79,8 +67,8 @@
     @autoreleasepool {
         //添加背景图片
         NSString *iamgePath = [[NSBundle mainBundle] pathForResource:@"eventBackGround" ofType:@"png"];
-        UIImage *img = [[[UIImage alloc] initWithContentsOfFile:iamgePath] autorelease];
-        self.imageView = [[[UIImageView alloc] initWithImage:img] autorelease];
+        UIImage *img = [[UIImage alloc] initWithContentsOfFile:iamgePath];
+        self.imageView = [[UIImageView alloc] initWithImage:img];
         _imageView.userInteractionEnabled = YES;
         _imageView.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
         [self addSubview:_imageView];
@@ -89,8 +77,8 @@
     //添加自动释放池————————————————————————————————————
     @autoreleasepool {
         NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"eventControllerTitle" ofType:@"png"];
-        UIImage *imgTitle = [[[UIImage alloc] initWithContentsOfFile:imagePath] autorelease];
-        self.imageViewTitle = [[[UIImageView alloc] initWithImage:imgTitle] autorelease];
+        UIImage *imgTitle = [[UIImage alloc] initWithContentsOfFile:imagePath];
+        self.imageViewTitle = [[UIImageView alloc] initWithImage:imgTitle];
         _imageViewTitle.userInteractionEnabled = YES;
         _imageViewTitle.frame = CGRectMake(0, 0, self.frame.size.width, 54);
         [self addSubview:_imageViewTitle];
@@ -109,7 +97,7 @@
         self.monthlyBackButton = [UIButton buttonWithType:UIButtonTypeSystem];
         [self.monthlyBackButton setFrame:CGRectMake(0, 5, 40, 40)];
         NSString *iamgePath = [[NSBundle mainBundle] pathForResource:@"diary_out" ofType:@"png"];
-        UIImage *img = [[[UIImage alloc] initWithContentsOfFile:iamgePath] autorelease];
+        UIImage *img = [[UIImage alloc] initWithContentsOfFile:iamgePath];
         [self.monthlyBackButton setBackgroundImage:img forState:UIControlStateNormal];
         [self addSubview:self.monthlyBackButton];
     }
@@ -120,7 +108,7 @@
     self.previousButton = [UIButton buttonWithType:UIButtonTypeSystem];
     self.previousButton.frame = CGRectMake(100, self.bounds.size.height - 100, 20, 18);
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"left" ofType:@"png"];
-    UIImage *image = [[[UIImage alloc] initWithContentsOfFile:imagePath] autorelease];
+    UIImage *image = [[UIImage alloc] initWithContentsOfFile:imagePath];
     [self.previousButton setBackgroundImage:image forState:UIControlStateNormal];
     self.previousButton.titleLabel.font = [UIFont fontWithName:@"LiDeBiao-Xing-3.0" size:19.f];
     [self addSubview:_previousButton];
@@ -128,7 +116,7 @@
     self.nextButton = [UIButton buttonWithType:UIButtonTypeSystem];
     self.nextButton.frame = CGRectMake(200, self.bounds.size.height - 100, 20, 18);
     imagePath = [[NSBundle mainBundle] pathForResource:@"right" ofType:@"png"];
-    image = [[[UIImage alloc] initWithContentsOfFile:imagePath] autorelease];
+    image = [[UIImage alloc] initWithContentsOfFile:imagePath];
     [self.nextButton setBackgroundImage:image forState:UIControlStateNormal];
     self.nextButton.titleLabel.font = [UIFont fontWithName:@"LiDeBiao-Xing-3.0" size:19.f];
     [self addSubview:_nextButton];

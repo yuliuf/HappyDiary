@@ -12,11 +12,11 @@
 
 @interface YCDetailHourglassViewController : UIViewController
 
-@property (nonatomic, retain) lxySandTimerModel *sandModel;
+@property (nonatomic, strong) lxySandTimerModel *sandModel;
 
-@property (nonatomic, retain) UIButton *rightButton;
-@property (nonatomic, retain) UIButton *leftButton;
+@property (nonatomic, strong) UIButton *rightButton;
+@property (nonatomic, strong) UIButton *leftButton;
 
-@property (nonatomic, retain) SZMusic *music;
+@property (nonatomic, strong) SZMusic *music;
 
 @end

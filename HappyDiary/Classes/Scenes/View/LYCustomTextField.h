@@ -11,6 +11,6 @@
 
 @interface LYCustomTextField : YCjiePingView
 
-@property (nonatomic, retain) UITextView *textView;
+@property (nonatomic, strong) UITextView *textView;
 
 @end

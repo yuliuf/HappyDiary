@@ -22,7 +22,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     
@@ -49,7 +49,7 @@
     BOOL b = [userDefaluts boolForKey:@"isFirst"];
     if (!b) {
         
-        lxyIntroduceViewController *introduceVC = [[lxyIntroduceViewController new] autorelease];
+        lxyIntroduceViewController *introduceVC = [lxyIntroduceViewController new];
         self.window.rootViewController = introduceVC;
         
         //同步
@@ -66,7 +66,7 @@
         [lxyFunctionOfDataBase createOneTable:@"specialDayTable"];
         [[lxyDataBase shareLxyDataBase] createUserTable];
         
-        lxyUserTableModel *model = [[[lxyUserTableModel alloc] initWithID:0 andName:nil andPWD:nil andBirthday:nil andHeaderImage:nil andIntroduce:nil andPhoto1:nil andPhoto2:nil] autorelease];
+        lxyUserTableModel *model = [[lxyUserTableModel alloc] initWithID:0 andName:nil andPWD:nil andBirthday:nil andHeaderImage:nil andIntroduce:nil andPhoto1:nil andPhoto2:nil];
         [[lxyDataBase shareLxyDataBase] insertToUserTableWithOneUserTableModel:model];
                             
 
@@ -79,11 +79,9 @@
         if ([userDefaluts boolForKey:@"isSetPwd"]) {
             LYLockViewController *lockVC = [LYLockViewController new];
             self.window.rootViewController = lockVC;
-            [lockVC release];
         } else {
             LYRoomViewViewController *rootVC = [[LYRoomViewViewController alloc] init];
             self.window.rootViewController = rootVC;
-            [rootVC release];
             
         }
     }

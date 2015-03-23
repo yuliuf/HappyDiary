@@ -10,9 +10,9 @@
 
 @interface YCSpecialDayView : UIView
 
-@property (nonatomic, retain) UITableView *tableView;
-@property (nonatomic, retain) UIImageView *imageView;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UIImageView *imageView;
 
-@property (nonatomic, retain) UIImageView *backImageView;
+@property (nonatomic, strong) UIImageView *backImageView;
 
 @end

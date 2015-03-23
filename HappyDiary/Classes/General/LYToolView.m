@@ -10,13 +10,6 @@
 
 @implementation LYToolView
 
-- (void)dealloc
-{
-    [_closeBtn release];
-    [_titleLbl release];
-    
-    [super dealloc];
-}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -27,12 +20,12 @@
         self.layer.shadowOffset = CGSizeMake(10, 10);
         self.layer.cornerRadius = 5;
         self.layer.shadowOpacity = 0.8f;
-        self.titleLbl = [[[UILabel alloc] initWithFrame: Rect(0, 0, frame.size.width, 30)] autorelease];
+        self.titleLbl = [[UILabel alloc] initWithFrame: Rect(0, 0, frame.size.width, 30)];
         self.titleLbl.textAlignment = NSTextAlignmentCenter;
         self.titleLbl.backgroundColor = myGreen;
         [self addSubview:_titleLbl];
         
-        self.closeBtn = [[[UIButton alloc] initWithFrame:Rect(frame.size.width - 25, 5, 20, 20)] autorelease];
+        self.closeBtn = [[UIButton alloc] initWithFrame:Rect(frame.size.width - 25, 5, 20, 20)];
         [self.closeBtn setBackgroundImage:[UIImage imageNamed:@"decolayer_tap_x"] forState:UIControlStateNormal];
         [self addSubview:_closeBtn];
 

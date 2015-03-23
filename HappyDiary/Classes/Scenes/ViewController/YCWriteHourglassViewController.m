@@ -14,8 +14,8 @@
 
 @interface YCWriteHourglassViewController () <UITextViewDelegate>
 
-@property (nonatomic, retain) YCWriteHourglassView *writeHourglassView;
-@property (nonatomic, retain) NSArray *imageArray;
+@property (nonatomic, strong) YCWriteHourglassView *writeHourglassView;
+@property (nonatomic, strong) NSArray *imageArray;
 @property (nonatomic, assign) NSInteger clickCount; // 记录点击的次数
 @property (nonatomic, copy) NSString *imagePath;    //  存储背景的路径
 
@@ -23,12 +23,6 @@
 
 @implementation YCWriteHourglassViewController
 
-- (void)dealloc
-{
-    [_sandModel release];
-    [_writeHourglassView release];
-    [super dealloc];
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,7 +39,7 @@
 
 - (void)loadView
 {
-    self.writeHourglassView = [[[YCWriteHourglassView alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.writeHourglassView = [[YCWriteHourglassView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.view = _writeHourglassView;
 }
 
@@ -112,7 +106,6 @@
         self.imagePath = [[NSBundle mainBundle] pathForResource:_imageArray[i] ofType:@"png"];
         UIImage *image = [[UIImage alloc] initWithContentsOfFile:_imagePath];
         self.writeHourglassView.bgImageView.image = image;
-        [image release];
     }
 }
 
@@ -136,12 +129,12 @@
     NSString *content = self.writeHourglassView.textView.text;
     
     //  沙漏中数据的时间
-    NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSString *time = [dateFormatter stringFromDate:[NSDate date]];
     
     //  创建个人模型
-    lxyAlonePersonModel *model = [[[lxyAlonePersonModel alloc] initWithName:name andID:ID andTime:time andContent:content andbackGroundImage:_imagePath andWeather:@"001"] autorelease];
+    lxyAlonePersonModel *model = [[lxyAlonePersonModel alloc] initWithName:name andID:ID andTime:time andContent:content andbackGroundImage:_imagePath andWeather:@"001"];
     
     //  插入到数据表中
     [[lxyDataBase shareLxyDataBase] insertToAlonePersonTableWithOneAlonePersonModel:model byName:name];

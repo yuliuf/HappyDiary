@@ -20,11 +20,6 @@
 @end
 
 @implementation LYCustomTabBar
-- (void)dealloc
-{
-    [_buttons release];    
-    [super dealloc];
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -100,15 +95,11 @@
     //  设置tabBar为根视图控制器 最后加上首页
     
     
-    self.viewControllers = [[[NSArray alloc] init] autorelease];
+    self.viewControllers = [[NSArray alloc] init];
     self.viewControllers = @[diaryVC, eventVC, hourglassVC, settingVC];
     //self.selectedIndex = 0;
     
     
-    [diaryVC release];
-    [eventVC release];
-    [hourglassVC release];
-    [settingVC release];
     
     
     //  创建按钮
@@ -122,7 +113,7 @@
     
     for (int i = 0; i < viewCount; i++) {
 
-        UIButton *btn = [[[UIButton alloc] init] autorelease];
+        UIButton *btn = [[UIButton alloc] init];
         
         btn.frame = CGRectMake(35 + i*_width,self.tabBar.frame.origin.y, _width - 10 , 25);
         UIImage *image = [UIImage imageNamed:@"intro_menu_brown"];

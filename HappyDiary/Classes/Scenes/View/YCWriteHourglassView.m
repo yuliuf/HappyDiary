@@ -10,11 +10,6 @@
 
 @implementation YCWriteHourglassView
 
-- (void)dealloc
-{
-    [_textView release];
-    [super dealloc];
-}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -27,26 +22,24 @@
 
 - (void)addAllViews
 {
-    self.backImageView = [[[UIImageView alloc] initWithFrame:self.bounds] autorelease];
+    self.backImageView = [[UIImageView alloc] initWithFrame:self.bounds];
     self.backImageView.image = [UIImage imageNamed:@"blueSky"];
     [self addSubview:_backImageView];
-    [_backImageView release];
     
     //  设置背景图
     NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"deco_sticker_mygom13" ofType:@"png"];
-    UIImage *image = [[[UIImage alloc] initWithContentsOfFile:imagePath] autorelease];
-    self.bgImageView = [[[UIImageView alloc] initWithImage:image] autorelease];
+    UIImage *image = [[UIImage alloc] initWithContentsOfFile:imagePath];
+    self.bgImageView = [[UIImageView alloc] initWithImage:image];
     _bgImageView.frame = Rect(15, 80, ScreenWidth - 30, 100);
     _bgImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self addSubview:_bgImageView];
-    [_bgImageView release];
     
     self.changeImageButton = [UIButton buttonWithType:UIButtonTypeSystem];
     _changeImageButton.frame = Rect(ScreenWidth - 50, 49, 40, 30);
     [_changeImageButton setBackgroundImage:[UIImage imageNamed:@"deco_sticker_mygom_tap_on"] forState:UIControlStateNormal];
     [self addSubview:_changeImageButton];
     
-    self.textView = [[[UITextView alloc] initWithFrame:Rect(MinX(_bgImageView.frame), MaxY(_bgImageView.frame), Width(_bgImageView.frame), ScreenHeight - 200)] autorelease];
+    self.textView = [[UITextView alloc] initWithFrame:Rect(MinX(_bgImageView.frame), MaxY(_bgImageView.frame), Width(_bgImageView.frame), ScreenHeight - 200)];
     self.textView.font = [UIFont fontWithName:@"LiDeBiao-Xing-3.0" size:19.f];
     self.textView.backgroundColor = [UIColor clearColor];
     self.textView.layer.borderWidth = 2;

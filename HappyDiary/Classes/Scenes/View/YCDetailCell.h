@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface YCDetailCell : UITableViewCell
-@property (nonatomic, retain) UIImageView *iconView;
-@property (nonatomic, retain) UILabel *contentLabel;
-@property (nonatomic, retain) UILabel *yearLabel;
-@property (nonatomic, retain) UILabel *dayLabel;
+@property (nonatomic, strong) UIImageView *iconView;
+@property (nonatomic, strong) UILabel *contentLabel;
+@property (nonatomic, strong) UILabel *yearLabel;
+@property (nonatomic, strong) UILabel *dayLabel;
 @end

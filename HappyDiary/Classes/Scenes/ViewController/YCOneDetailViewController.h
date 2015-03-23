@@ -10,5 +10,5 @@
 @class lxyAlonePersonModel;
 
 @interface YCOneDetailViewController : UIViewController
-@property (nonatomic, retain) lxyAlonePersonModel *aloneModel;
+@property (nonatomic, strong) lxyAlonePersonModel *aloneModel;
 @end

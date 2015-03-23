@@ -11,7 +11,7 @@
 @interface lxySandTimerModel : NSObject
 
 @property (nonatomic , copy) NSString *ID;      //沙漏的ID
-@property (nonatomic , copy) NSString *style;   //沙漏的风格
+@property (nonatomic , copy) NSString *sandStyle;   //沙漏的风格
 @property (nonatomic , copy) NSString *backGroundMusic;     //背景音乐
 @property (nonatomic , copy) NSString *peopleName;          //人名
 @property (nonatomic , copy) NSString *time;                //时间

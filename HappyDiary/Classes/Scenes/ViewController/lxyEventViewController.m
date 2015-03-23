@@ -31,24 +31,14 @@
     int i; //  控制月份的切换
 }
 
-@property (nonatomic, retain) NSMutableArray *array;
-@property (nonatomic, retain) NSMutableDictionary *dict;
-@property (nonatomic, retain) NSMutableArray *keyArray;
+@property (nonatomic, strong) NSMutableArray *array;
+@property (nonatomic, strong) NSMutableDictionary *dict;
+@property (nonatomic, strong) NSMutableArray *keyArray;
 
 @end
 
 @implementation lxyEventViewController
 
-- (void)dealloc
-{
-    [_monthlyView release];
-    [_weeklyView release];
-    [_dailyView release];
-    [_personDataView release];
-    [_baseView release];
-    
-    [super dealloc];
-}
 
 //monthlyView、weeklyView、dailyView、personView 的懒加载
 - (lxyMonthlyView *)monthlyView
@@ -91,13 +81,13 @@
 
 - (void)loadView
 {
-    self.monthlyView = [[[lxyMonthlyView alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    self.weeklyView = [[[lxyWeeklyView alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    self.dailyView = [[[lxyDailyView alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    self.personDataView = [[[lxyPersonDataView alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.monthlyView = [[lxyMonthlyView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.weeklyView = [[lxyWeeklyView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.dailyView = [[lxyDailyView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.personDataView = [[lxyPersonDataView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     
-    self.baseView = [[[lxyBaseView alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.baseView = [[lxyBaseView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     [self weeklyButton1ForDailyViewAction:nil];
 }
@@ -175,7 +165,6 @@
     //diary界面的轻拍手势
     UITapGestureRecognizer *tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGRAction:)];
     [self.dailyView addGestureRecognizer:tapGR];
-    [tapGR release];
     
     //为各个页面的返回按钮添加事件
     [self.monthlyView.monthlyBackButton addTarget:self action:@selector(monthlyBackButtonAction:) forControlEvents:UIControlEventTouchUpInside];
@@ -213,7 +202,6 @@
     detailVC.contentImage = cell.contentImageView.image;
     
     [self presentViewController:detailVC animated:YES completion:nil];
-    [detailVC release];
 }
 
 //personDataView上button按钮的事件
@@ -269,7 +257,7 @@
         _personDataView.headerIcon.layer.cornerRadius = 0.f;
         
         //  获取当前时间
-        NSDateFormatter *dateFormatter = [[[NSDateFormatter alloc] init] autorelease];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
         
         //看一下数据库中有没有该个人介绍的数据
@@ -279,7 +267,7 @@
             //创建该表
             [[lxyDataBase shareLxyDataBase] createUserTable];
             //并把该person插入到新建的表中
-            lxyUserTableModel *model = [[[lxyUserTableModel alloc] initWithID:0 andName:nil andPWD:nil andBirthday:nil andHeaderImage:nil andIntroduce:nil andPhoto1:nil andPhoto2:nil] autorelease];
+            lxyUserTableModel *model = [[lxyUserTableModel alloc] initWithID:0 andName:nil andPWD:nil andBirthday:nil andHeaderImage:nil andIntroduce:nil andPhoto1:nil andPhoto2:nil];
             [[lxyDataBase shareLxyDataBase] insertToUserTableWithOneUserTableModel:model];
         } else {        //如果表中有数据
             //把该person的资料存到数据库中
@@ -320,12 +308,10 @@
         picker.allowsEditing = YES;     //是否可以编辑
         picker.sourceType = UIImagePickerControllerSourceTypeCamera;        //获取摄像头
         [self presentViewController:picker animated:YES completion:nil];
-        [picker release];
     } else {
         //提示用户没有照相机功能
         UIAlertView *aler = [[UIAlertView alloc] initWithTitle:@"warnning" message:@"没有没有照相功能" delegate:self cancelButtonTitle:@"ok" otherButtonTitles: nil];
         [aler show];
-        [aler release];
     }
 }
 //调用图库方法
@@ -338,11 +324,9 @@
         picker.allowsEditing = YES;     //是否可以编辑
         picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;      //打开相册
         [self presentViewController:picker animated:YES completion:nil];
-        [picker release];
     } else {
         UIAlertView *aler = [[UIAlertView alloc] initWithTitle:@"提示" message:@"打开相册失败" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
         [aler show];
-        [aler release];
     }
 }
 //UIImagePickerControllerDelegate里的方法
@@ -381,7 +365,7 @@
     [imgData writeToFile:imagePath atomically:YES];
     //添加自动释放池————————————————————
     @autoreleasepool {
-        UIImage *selectImage = [[[UIImage alloc] initWithContentsOfFile:imagePath] autorelease];
+        UIImage *selectImage = [[UIImage alloc] initWithContentsOfFile:imagePath];
         self.personDataView.headerIcon.image = selectImage;
         self.personDataView.headerIcon.contentMode = UIViewContentModeScaleAspectFit;
         [[lxyDataBase shareLxyDataBase] alertHeadImageWithHeadImage:imagePath];
@@ -452,7 +436,6 @@
         textView.text = [toBeString substringToIndex:150];
         UIAlertView *aler = [[UIAlertView alloc] initWithTitle:@"warnning" message:@"不能超过150个数字" delegate:self cancelButtonTitle:@"ok" otherButtonTitles: nil];
         [aler show];
-        [aler release];
         [textView setEditable:NO];
         return NO;
     }
@@ -470,7 +453,6 @@
             textField.text = [toBeString substringToIndex:5];
             UIAlertView *aler = [[UIAlertView alloc] initWithTitle:@"warnning" message:@"不能超过5个数字" delegate:self cancelButtonTitle:@"ok" otherButtonTitles: nil];
             [aler show];
-            [aler release];
             [textField setEnabled:NO];
             return NO;
         }
@@ -481,7 +463,6 @@
             textField.text = [toBeString substringToIndex:10];
             UIAlertView *aler = [[UIAlertView alloc] initWithTitle:@"warnning" message:@"不能超过10个数字" delegate:self cancelButtonTitle:@"ok" otherButtonTitles: nil];
             [aler show];
-            [aler release];
             [textField setEnabled:NO];
             return NO;
         }
@@ -572,12 +553,12 @@
 - (void)getMonth
 {
     if (i >= 0) {
-        NSCalendar *gregorian = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
+        NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
         NSRange totaldaysForMonth = [gregorian rangeOfUnit:NSDayCalendarUnit inUnit:NSMonthCalendarUnit forDate:dtForMonth];
         dtForMonth = [dtForMonth dateByAddingTimeInterval:i * (Seconds_of_Minute * Minutes_of_Hour * Hours_of_Day * totaldaysForMonth.length)];
     } else {
-        NSCalendar *gregorian = [[[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar] autorelease];
-        NSDateComponents *components = [[[NSDateComponents alloc] init] autorelease];
+        NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+        NSDateComponents *components = [[NSDateComponents alloc] init];
         [components setMonth:i * (Minus_month_for_Previous_Action)];
         dtForMonth = [gregorian dateByAddingComponents:components toDate:dtForMonth options:0];
     }
@@ -591,7 +572,7 @@
     {
         [[self.monthlyView viewWithTag:1001] removeFromSuperview];
     }
-    UIView *viewTmp = [[[UIView alloc] initWithFrame:CGRectMake(0, 30, 320, 400)] autorelease];
+    UIView *viewTmp = [[UIView alloc] initWithFrame:CGRectMake(0, 30, 320, 400)];
     //viewTmp.backgroundColor = [UIColor cyanColor];
     viewTmp.tag=1001;
     [self.monthlyView.imageView addSubview:viewTmp];
@@ -608,7 +589,7 @@
     NSInteger day = [components day];
     
     //  显示月份
-    NSDateFormatter *dt = [[[NSDateFormatter alloc] init] autorelease];
+    NSDateFormatter *dt = [[NSDateFormatter alloc] init];
     NSString *strMonthName = [[dt monthSymbols] objectAtIndex:month-1];//January,Febryary,March etc...
     strMonthName = [ strMonthName stringByAppendingString:[NSString  stringWithFormat:@"- %d",year]];
     
@@ -617,7 +598,7 @@
     //  日历的Y坐标
     originY = 80;
     
-    YCCalendarView  *vwCal = [[[YCCalendarView alloc] initWithFrame:CGRectMake(X, 0, 287, self.view.bounds.size.height - 50)] autorelease];
+    YCCalendarView  *vwCal = [[YCCalendarView alloc] initWithFrame:CGRectMake(X, 0, 287, self.view.bounds.size.height - 50)];
     X++;
     vwCal.tag = 100;
     vwCal.layer.masksToBounds = NO;
@@ -625,7 +606,7 @@
     //添加自动释放池————————————————————————————————————
     @autoreleasepool {
         NSString *imagePath = [[NSBundle mainBundle] pathForResource:@"blueSky" ofType:@"png"];
-        UIImage *image = [[[UIImage alloc] initWithContentsOfFile:imagePath] autorelease];
+        UIImage *image = [[UIImage alloc] initWithContentsOfFile:imagePath];
         vwCal.backgroundColor = [UIColor colorWithPatternImage:image];
         vwCal = [vwCal createCalOfDay:day Month:month Year:year MonthName:strMonthName];
     }
@@ -653,7 +634,7 @@
     static NSString *cell_idenfier = @"cell_idenfier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cell_idenfier];
     if (!cell) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cell_idenfier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cell_idenfier];
     }
     NSArray *nowArray = self.dict[self.keyArray[indexPath.section]];
     cell.textLabel.text = [nowArray[indexPath.row] diary_title];
@@ -665,11 +646,9 @@
     cell.detailTextLabel.font = [UIFont fontWithName:@"LiDeBiao-Xing-3.0" size:20.f];
     UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"fy"]];
     cell.backgroundView = imageView;
-    [imageView release];
     NSString *iconImagePath = [nowArray[indexPath.row] diary_icon];
     UIImage *image = [[UIImage alloc] initWithContentsOfFile:iconImagePath];
     cell.imageView.image = image;
-    [image release];
     return cell;
 }
 

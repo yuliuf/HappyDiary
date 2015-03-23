@@ -104,7 +104,7 @@ lxyDataBase *_dataBase = nil;
 {
     [self openDataBase];
     
-    NSString *style = sandTimerModel.style;
+    NSString *style = sandTimerModel.sandStyle;
     NSString *backGroundMusic = sandTimerModel.backGroundMusic;
     NSString *peopleName = sandTimerModel.peopleName;
     NSString *time = sandTimerModel.time;
@@ -152,7 +152,7 @@ lxyDataBase *_dataBase = nil;
 {
     [self openDataBase];
     
-    NSString *style = sandTimerModel.style;
+    NSString *style = sandTimerModel.sandStyle;
     NSInteger ID = [sandTimerModel.ID integerValue];
     
     NSString *sql = [NSString stringWithFormat:@"update sandTimerTable set style = '%@' where ID = '%d'", style , ID];
@@ -176,7 +176,7 @@ lxyDataBase *_dataBase = nil;
     [self openDataBase];
     
     //创建一个lxySandTimerModel对象
-    lxySandTimerModel *sandTimerModel = [[[lxySandTimerModel alloc] init] autorelease];
+    lxySandTimerModel *sandTimerModel = [[lxySandTimerModel alloc] init];
     
     //准备存储值的对象
     sqlite3_stmt *stmt = nil;
@@ -214,7 +214,7 @@ lxyDataBase *_dataBase = nil;
             NSString *introduce = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 5)];
             
             sandTimerModel.ID = [NSString stringWithFormat:@"%d", ID];
-            sandTimerModel.style = style;
+            sandTimerModel.sandStyle = style;
             sandTimerModel.backGroundMusic = backGroundMusic;
             sandTimerModel.peopleName = peopleName;
             sandTimerModel.time = time;
@@ -254,7 +254,7 @@ lxyDataBase *_dataBase = nil;
     while (sqlite3_step(stmt) == SQLITE_ROW) {
         
         //准备sandTimerModel对象
-        lxySandTimerModel *sandTimerModel = [[[lxySandTimerModel alloc] init] autorelease];
+        lxySandTimerModel *sandTimerModel = [[lxySandTimerModel alloc] init];
         
         //获取ID
         NSInteger ID = sqlite3_column_int(stmt, 0);
@@ -275,7 +275,7 @@ lxyDataBase *_dataBase = nil;
         NSString *introduce = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 5)];
         
         sandTimerModel.ID = [NSString stringWithFormat:@"%d", ID];
-        sandTimerModel.style = style;
+        sandTimerModel.sandStyle = style;
         sandTimerModel.backGroundMusic = backGroundMusic;
         sandTimerModel.peopleName = peopleName;
         sandTimerModel.time = time;
@@ -551,7 +551,7 @@ lxyDataBase *_dataBase = nil;
     //判断是否可以往下读取
     while (sqlite3_step(stmt) == SQLITE_ROW) {
         //准备userMode对象
-        lxyUserTableModel *model = [[[lxyUserTableModel alloc] init] autorelease];
+        lxyUserTableModel *model = [[lxyUserTableModel alloc] init];
         
         //字段（user_id, user_name, user_pwd, user_birthday, user_headerImage, user_introduction）
         
@@ -693,7 +693,7 @@ lxyDataBase *_dataBase = nil;
     while (sqlite3_step(stmt) == SQLITE_ROW) {
         
         //准备backGroundImageModel对象
-        lxyBackGroundImageModel *backGroundImageModel = [[[lxyBackGroundImageModel alloc] init] autorelease];
+        lxyBackGroundImageModel *backGroundImageModel = [[lxyBackGroundImageModel alloc] init];
         
         //获取ID
         NSInteger ID = sqlite3_column_int(stmt, 0);
@@ -721,7 +721,7 @@ lxyDataBase *_dataBase = nil;
     [self openDataBase];
     
     //创建一个lxyBackGroundImageModel对象
-    lxyBackGroundImageModel *backGroundImageModel = [[[lxyBackGroundImageModel alloc] init] autorelease];
+    lxyBackGroundImageModel *backGroundImageModel = [[lxyBackGroundImageModel alloc] init];
     
     //准备存储值的对象
     sqlite3_stmt *stmt = nil;
@@ -850,7 +850,7 @@ lxyDataBase *_dataBase = nil;
     [self openDataBase];
     
     //创建一个lxySandTimerModel对象
-    lxyAlonePersonModel *alonePersonModel = [[[lxyAlonePersonModel alloc] init] autorelease];
+    lxyAlonePersonModel *alonePersonModel = [[lxyAlonePersonModel alloc] init];
     
     //准备存储值的对象
     sqlite3_stmt *stmt = nil;
@@ -929,7 +929,7 @@ lxyDataBase *_dataBase = nil;
     while (sqlite3_step(stmt) == SQLITE_ROW) {
         
         //准备backGroundImageModel对象
-        lxyAlonePersonModel *alonePersonModel = [[[lxyAlonePersonModel alloc] init] autorelease];
+        lxyAlonePersonModel *alonePersonModel = [[lxyAlonePersonModel alloc] init];
         
         //获取ID
         NSInteger ID = sqlite3_column_int(stmt, 0);
@@ -1053,7 +1053,7 @@ lxyDataBase *_dataBase = nil;
     [self openDataBase];
     
     //创建一个lxySandTimerModel对象
-    lxyDiaryModel *diaryModel = [[[lxyDiaryModel alloc] init] autorelease];
+    lxyDiaryModel *diaryModel = [[lxyDiaryModel alloc] init];
     
     //准备存储值的对象
     sqlite3_stmt *stmt = nil;
@@ -1127,7 +1127,7 @@ lxyDataBase *_dataBase = nil;
     while (sqlite3_step(stmt) == SQLITE_ROW) {
         
         //准备backGroundImageModel对象
-        lxyDiaryModel *diaryModel = [[[lxyDiaryModel alloc] init] autorelease];
+        lxyDiaryModel *diaryModel = [[lxyDiaryModel alloc] init];
         
         //获取ID
         NSInteger ID = sqlite3_column_int(stmt, 0);
@@ -1258,7 +1258,7 @@ lxyDataBase *_dataBase = nil;
     while (sqlite3_step(stmt) == SQLITE_ROW) {
         
         //准备backGroundImageModel对象
-        lxyAlonePersonModel *alonePersonModel = [[[lxyAlonePersonModel alloc] init] autorelease];
+        lxyAlonePersonModel *alonePersonModel = [[lxyAlonePersonModel alloc] init];
         
         //获取ID
         NSInteger ID = sqlite3_column_int(stmt, 0);
@@ -1389,7 +1389,7 @@ lxyDataBase *_dataBase = nil;
     while (sqlite3_step(stmt) == SQLITE_ROW) {
         
         //准备backGroundImageModel对象
-        YCSpecialDayTable *specoalDayModel = [[[YCSpecialDayTable alloc] init] autorelease];
+        YCSpecialDayTable *specoalDayModel = [[YCSpecialDayTable alloc] init];
         
         //获取ID
         NSInteger ID = sqlite3_column_int(stmt, 0);

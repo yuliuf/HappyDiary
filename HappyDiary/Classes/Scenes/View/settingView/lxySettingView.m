@@ -13,26 +13,6 @@
 
 @implementation lxySettingView
 
-- (void)dealloc
-{
-    [_pwdSwitch release];
-    
-    [_versionsLabel release];
-    [_pwdLabel release];
-    [_backupLabel release];
-    
-    [_alertPwdBtn release];
-//    [_setPwdBtn release];
-    [_backUpBtn release];
-    
-    [_mimaImageView release];
-    [_xiaoxiongImageView release];
-    [_backImgView release];
-    [_aboutLable release];
-    [_aboutTextView release];
-    [_aboutButton release];
-    [super dealloc];
-}
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -60,15 +40,15 @@
 {
     //初始化密码imageView
     NSString *imagePathGai = [[NSBundle mainBundle] pathForResource:@"mima" ofType:@"png"];
-    UIImage *img = [[[UIImage alloc] initWithContentsOfFile:imagePathGai] autorelease];
-    self.mimaImageView = [[[UIImageView alloc] initWithImage:img] autorelease];
+    UIImage *img = [[UIImage alloc] initWithContentsOfFile:imagePathGai];
+    self.mimaImageView = [[UIImageView alloc] initWithImage:img];
     _mimaImageView.frame = CGRectMake(_versionsLabel.frame.origin.x, _versionsLabel.frame.origin.y + _versionsLabel.frame.size.height, WIDTHOFLABEL, HEIGHTOFLABEL + 50);
     [self addSubview:_mimaImageView];
     
     //给该设置页面添加背景图片
     imagePathGai = [[NSBundle mainBundle] pathForResource:@"blueSky" ofType:@"png"];
-    UIImage *backImg = [[[UIImage alloc] initWithContentsOfFile:imagePathGai] autorelease];
-    self.backImgView = [[[UIImageView alloc] initWithImage:backImg] autorelease];
+    UIImage *backImg = [[UIImage alloc] initWithContentsOfFile:imagePathGai];
+    self.backImgView = [[UIImageView alloc] initWithImage:backImg];
     _backImgView.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
     [self addSubview:_backImgView];
     _backImgView.userInteractionEnabled = YES;
@@ -78,21 +58,18 @@
     pwdImageView.frame = Rect(50, 80, 30, 25);
     pwdImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self addSubview:pwdImageView];
-    [pwdImageView release];
     
     UILabel *pwdLabel = [[UILabel alloc] initWithFrame:Rect(MaxX(pwdImageView.frame) + 10, MinY(pwdImageView.frame), 40, 25)];
     pwdLabel.text = @"密码";
 
     pwdLabel.font = myZiti;
     [self addSubview:pwdLabel];
-    [pwdLabel release];
     
     
     //版本
     UIImageView *versionImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"deco_sticker_mygom_tap_on"]];
     versionImageView.frame = Rect(MinX(pwdImageView.frame), MaxY(pwdImageView.frame) + 20, 30, 25);
     [self addSubview:versionImageView];
-    [versionImageView release];
 
     
     self.versionsLabel = [self createLabelWithName:@"版本 rainbowYu 1.0.0.1" andFrame:CGRectMake(MinX(pwdLabel.frame) , MinY(versionImageView.frame) , 200 , 25)];
@@ -108,7 +85,6 @@
     fresherImageView.frame = Rect(MinX(pwdImageView.frame), MaxY(versionImageView.frame) + 20, 30, 25);
     fresherImageView.contentMode = UIViewContentModeScaleAspectFit;
     [self addSubview:fresherImageView];
-    [fresherImageView release];
     
     
     self.aboutButton = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -124,7 +100,7 @@
 
     
     //初始化密码开关
-    self.pwdSwitch = [[[UISwitch alloc] initWithFrame:CGRectMake(self.bounds.size.width - 80, MinY(pwdLabel.frame), 40, 25)] autorelease];
+    self.pwdSwitch = [[UISwitch alloc] initWithFrame:CGRectMake(self.bounds.size.width - 80, MinY(pwdLabel.frame), 40, 25)];
     [_pwdSwitch setOn:NO];
     [self addSubview:_pwdSwitch];
     
@@ -157,8 +133,8 @@
     
     //添加旁边的小熊图片
     imagePathGai = [[NSBundle mainBundle] pathForResource:@"xiaoxiaong" ofType:@"png"];
-    UIImage *imageGai = [[[UIImage alloc] initWithContentsOfFile:imagePathGai] autorelease];
-    self.xiaoxiongImageView = [[[UIImageView alloc] initWithImage:imageGai] autorelease];
+    UIImage *imageGai = [[UIImage alloc] initWithContentsOfFile:imagePathGai];
+    self.xiaoxiongImageView = [[UIImageView alloc] initWithImage:imageGai];
     self.xiaoxiongImageView.frame = CGRectMake(0, 180, 0, 100);
     [self.backImgView addSubview:_xiaoxiongImageView];
     
@@ -167,7 +143,6 @@
     self.aboutLable.text = @"关于我们";
     self.aboutLable.font = myZiti;
     [self addSubview:_aboutLable];
-    [_aboutLable release];
     
     
     
@@ -180,7 +155,6 @@
     self.aboutTextView.userInteractionEnabled = NO;
     self.aboutTextView.font = myZiti;
     [self addSubview:_aboutTextView];
-    [_aboutTextView release];
 
 }
 
@@ -193,7 +167,7 @@
     UILabel *label = [[UILabel alloc] initWithFrame:frame];
     label.text = name;
     label.textAlignment = NSTextAlignmentCenter;
-    return [label autorelease];
+    return label;
 }
 //创建button
 - (UIButton *)createButtonWithName:(NSString *)name

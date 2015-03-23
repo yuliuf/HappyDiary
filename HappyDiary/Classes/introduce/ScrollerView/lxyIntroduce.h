@@ -12,12 +12,12 @@
 
 @interface lxyIntroduce : UIView<UIScrollViewDelegate>
 
-@property (nonatomic , retain) UIScrollView *scroller;
+@property (nonatomic , strong) UIScrollView *scroller;
 
-@property (nonatomic , retain) UIButton *loginBtn;          //登录按钮
+@property (nonatomic , strong) UIButton *loginBtn;          //登录按钮
 
-@property (nonatomic , retain) UIPageControl *pageControll; //页面控制器
+@property (nonatomic , strong) UIPageControl *pageControll; //页面控制器
 
-@property (nonatomic , retain) EmitterView *boom;           //button的爆咋效果
+@property (nonatomic , strong) EmitterView *boom;           //button的爆咋效果
 
 @end

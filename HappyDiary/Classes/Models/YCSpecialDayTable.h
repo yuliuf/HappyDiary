@@ -10,10 +10,10 @@
 
 @interface YCSpecialDayTable : NSObject
 
-@property (nonatomic, retain) NSString *sd_id;
-@property (nonatomic, retain) NSString *sd_time;
-@property (nonatomic, retain) NSString *sd_title;
-@property (nonatomic, retain) NSString *sd_icon;
+@property (nonatomic, strong) NSString *sd_id;
+@property (nonatomic, strong) NSString *sd_time;
+@property (nonatomic, strong) NSString *sd_title;
+@property (nonatomic, strong) NSString *sd_icon;
 
 - (instancetype)initWithID:(NSString *)ID time:(NSString *)time title:(NSString *)title icon:(NSString *)icon;
 
