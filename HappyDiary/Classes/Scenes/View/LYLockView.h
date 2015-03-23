@@ -3,7 +3,7 @@
 //  HappyDiary
 //
 //  Created by liuyu on 14-7-1.
-//  Copyright (c) 2014年/Users/lanou3g/Desktop/HappyDiary 4.1 2/HappyDiary/test.png lanou3g. All rights reserved.
+//  Copyright (c) 2014年/Users/RainbowYu/Desktop/HappyDiary 4.1 2/HappyDiary/test.png RainbowYu. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

@@ -3,7 +3,7 @@
 //  TextCalender
 //
 //  Created by 孙震 on 14-6-21.
-//  Copyright (c) 2014年 lanou3g. All rights reserved.
+//  Copyright (c) 2014年 RainbowYu. All rights reserved.
 //
 
 #import "YCSmallCalendarView.h"

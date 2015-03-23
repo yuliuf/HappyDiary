@@ -10,31 +10,31 @@
 	<string>HappyDiary</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>CE3178CA-A669-43B6-9E17-5F7FDADE6DB3</key>
-		<string>https://github.com/yuliuf/First-Project.git</string>
+		<key>1A4B8162DA47A39CC3FFB6E23D112D1A864D6BCE</key>
+		<string>https://github.com/SunYuChen/HappyDiary.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>HappyDiary/HappyDiary.xcodeproj/project.xcworkspace</string>
+	<string>HappyDiary.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>CE3178CA-A669-43B6-9E17-5F7FDADE6DB3</key>
-		<string>../../..</string>
+		<key>1A4B8162DA47A39CC3FFB6E23D112D1A864D6BCE</key>
+		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/yuliuf/First-Project.git</string>
+	<string>https://github.com/SunYuChen/HappyDiary.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>CE3178CA-A669-43B6-9E17-5F7FDADE6DB3</string>
+	<string>1A4B8162DA47A39CC3FFB6E23D112D1A864D6BCE</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>CE3178CA-A669-43B6-9E17-5F7FDADE6DB3</string>
+			<string>1A4B8162DA47A39CC3FFB6E23D112D1A864D6BCE</string>
 			<key>IDESourceControlWCCName</key>
-			<string>First Project</string>
+			<string>HappyDiary</string>
 		</dict>
 	</array>
 </dict>

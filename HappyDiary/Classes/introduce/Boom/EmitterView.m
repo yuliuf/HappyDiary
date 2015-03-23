@@ -3,7 +3,7 @@
 //  ui-4.1
 //
 //  Created by 孙震 on 14-5-18.
-//  Copyright (c) 2014年 lanou3g. All rights reserved.
+//  Copyright (c) 2014年 RainbowYu. All rights reserved.
 //
 
 #import "EmitterView.h"

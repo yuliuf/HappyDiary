@@ -3,7 +3,7 @@
 //  SettingView
 //
 //  Created by 刘翔宇 on 14-6-22.
-//  Copyright (c) 2014年 lanou3g. All rights reserved.
+//  Copyright (c) 2014年 RainbowYu. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
