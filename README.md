@@ -1,0 +1,2 @@
+#HappyDiary
+First commit
