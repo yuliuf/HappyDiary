@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>4D7E9C2B-87D3-4717-B33E-9D0AD67FD4D7</string>
+	<key>IDESourceControlProjectName</key>
+	<string>HappyDiary</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>CE3178CA-A669-43B6-9E17-5F7FDADE6DB3</key>
+		<string>https://github.com/yuliuf/First-Project.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>HappyDiary/HappyDiary.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>CE3178CA-A669-43B6-9E17-5F7FDADE6DB3</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/yuliuf/First-Project.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>CE3178CA-A669-43B6-9E17-5F7FDADE6DB3</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CE3178CA-A669-43B6-9E17-5F7FDADE6DB3</string>
+			<key>IDESourceControlWCCName</key>
+			<string>First Project</string>
+		</dict>
+	</array>
+</dict>
+</plist>

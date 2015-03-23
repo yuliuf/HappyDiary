@@ -1,0 +1,72 @@
+//
+//  Prefix header
+//
+//  The contents of this file are implicitly included at the beginning of every source file.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+#endif
+
+//  数据库
+#import "lxyFunctionOfDataBase.h"
+//  获取时间
+#import "LYToolView.h"
+#import "lxyBaseView.h"
+#import "LYButtonImageView.h"
+#import "LYToolBarView.h"
+#import "lxyDataBase.h"
+#import "LYBaseViewController.h"
+#import "LYHelper.h"
+
+
+#define KDocument [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) firstObject]
+
+
+//  空出状态栏
+#define kMargin 50
+#define edgeMagin 20
+
+// 使用2进制表示颜色的宏
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+//  字体
+#define myZiti [UIFont fontWithName:@"LiDeBiao-Xing-3.0" size:(18.f)]
+#define myZitiBig [UIFont fontWithName:@"LiDeBiao-Xing-3.0" size:(25.f)]
+#define ziti @"LiDeBiao-Xing-3.0"
+
+
+//  关于获取frame的x, y, width, height宏
+#define Rect(x, y, w, h) CGRectMake(x, y, w, h)
+#define MaxY(x) CGRectGetMaxY(x)
+#define MaxX(x) CGRectGetMaxX(x)
+#define MinX(x) CGRectGetMinX(x)
+#define MinY(x) CGRectGetMinY(x)
+#define Width(x) CGRectGetWidth(x)
+#define Height(x) CGRectGetHeight(x)
+
+//  屏幕宽高
+#define ScreenWidth [UIScreen mainScreen].bounds.size.width
+#define ScreenHeight [UIScreen mainScreen].bounds.size.height
+
+//  打印语句
+#define WhatIsX(x) NSLog(@"%@", x);
+#define __Func__  NSLog(@"%s", __FUNCTION__);
+
+//  颜色
+#define myBlack [UIColor BlackColor]
+#define myPink UIColorFromRGB(0xFF88C2)
+#define myYellow UIColorFromRGB(0xFFD700)
+#define myBlue UIColorFromRGB(0x4169E1)
+#define myGreen UIColorFromRGB(0x3CB371)
+#define myGray UIColorFromRGB(0xDDDDDD)
+#define myRed UIColorFromRGB(0x800000)
+#define myBrown UIColorFromRGB(0xA0522D)
+#define myDian UIColorFromRGB(0x708090)
