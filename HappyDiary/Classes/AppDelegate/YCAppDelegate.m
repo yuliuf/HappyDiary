@@ -7,12 +7,7 @@
 //
 
 #import "YCAppDelegate.h"
-//#import "YCDiaryViewController.h"
-//#import "lxyEventViewController.h"
-//#import "YCHourglassViewController.h"
-//#import "YCSetttingViewController.h"
 #import "LYRoomViewViewController.h"
-//#import "LYTabBarController.h"
 #import "lxyIntroduceViewController.h"
 #import "LYLockViewController.h"
 #import "lxyUserTableModel.h"
