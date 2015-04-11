@@ -7,20 +7,15 @@
 //
 
 #import "lxyEventViewController.h"
-
 #import "lxyMonthlyView.h"
 #import "lxyWeeklyView.h"
 #import "lxyDailyView.h"
 #import "lxyPersonDataView.h"
-//#import "lxyBaseView.h"
-//#import "lxyDataBase.h"
 #import "lxyWeeklyCell.h"
 #import "YCWeeklyDetailViewController.h"
 #import "lxyUserTableModel.h"
-
-//#import "YCCalendarView.h"
-//#import <QuartzCore/QuartzCore.h>
 #import "lxyDiaryModel.h"
+
 #define kBegin 40
 #define kWidth 80
 #define kHeight 30
