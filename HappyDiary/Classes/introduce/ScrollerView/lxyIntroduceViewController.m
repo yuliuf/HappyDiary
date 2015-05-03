@@ -45,13 +45,8 @@
 //立即体验按钮的监听事件
 - (void)loginBtnAction:(UIButton *)sender
 {
-    NSLog(@"jjdlfj");
-    
     LYRoomViewViewController *rootVC = [[LYRoomViewViewController alloc] init];
-//    self.window.rootViewController = rootVC;
-//    rootVC.modalPresentationStyle = UIModalPresentationPageSheet;
     rootVC.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-    
     [self presentViewController:rootVC animated:YES completion:nil];
 }
 

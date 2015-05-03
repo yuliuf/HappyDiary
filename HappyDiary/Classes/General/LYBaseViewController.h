@@ -10,5 +10,6 @@
 
 @interface LYBaseViewController : UIViewController
 
-@property (nonatomic, strong) UIButton *backButton;
+- (void)hiddenBackButton:(BOOL)isHidden;
+
 @end

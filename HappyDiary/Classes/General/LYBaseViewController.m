@@ -10,6 +10,8 @@
 
 @interface LYBaseViewController ()
 
+@property (nonatomic, strong) UIButton *backButton;
+
 @end
 
 @implementation LYBaseViewController
@@ -38,6 +40,11 @@
 - (void)backButtonAction:(UIButton *)sender
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)hiddenBackButton:(BOOL)isHidden
+{
+    self.backButton.hidden = isHidden;
 }
 
 - (void)didReceiveMemoryWarning
