@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LYLockViewController : UIViewController
+@interface LYLockViewController : LYBaseViewController
 
 @end

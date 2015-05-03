@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface YCSpecialDayViewController : UIViewController
+@interface YCSpecialDayViewController : LYBaseViewController
 
 @property (nonatomic, strong) UIView *contentView;
 

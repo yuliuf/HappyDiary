@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @class SZMusic;
 
-@interface YCCreateHourglassViewController : UIViewController
+@interface YCCreateHourglassViewController : LYBaseViewController
 
 @property (nonatomic, strong) SZMusic *music;
 

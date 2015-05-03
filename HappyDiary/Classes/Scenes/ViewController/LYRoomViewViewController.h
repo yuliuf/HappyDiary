@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LYRoomViewViewController : UIViewController
+@interface LYRoomViewViewController : LYBaseViewController
 
 @end

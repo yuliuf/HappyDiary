@@ -47,6 +47,7 @@
 {
     [super viewDidLoad];
 	self.imagePath = [[NSBundle mainBundle] pathForResource:@"deco_sticker_mygom13" ofType:@"png"];
+    [self hiddenBackButton:YES];
     
     /*
     //  rightBar

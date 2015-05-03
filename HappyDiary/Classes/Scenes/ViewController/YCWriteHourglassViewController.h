@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @class lxySandTimerModel;
 
-@interface YCWriteHourglassViewController : UIViewController
+@interface YCWriteHourglassViewController : LYBaseViewController
 
 @property (nonatomic, strong) lxySandTimerModel *sandModel;
 

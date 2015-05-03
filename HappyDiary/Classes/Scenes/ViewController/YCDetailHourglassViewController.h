@@ -10,7 +10,7 @@
 @class lxySandTimerModel;
 @class SZMusic;
 
-@interface YCDetailHourglassViewController : UIViewController
+@interface YCDetailHourglassViewController : LYBaseViewController
 
 @property (nonatomic, strong) lxySandTimerModel *sandModel;
 

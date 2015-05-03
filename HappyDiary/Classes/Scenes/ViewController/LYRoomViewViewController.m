@@ -47,7 +47,8 @@ NSInteger zhaoxiangji = 0;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    [self hiddenBackButton:YES];
+    
     //  书本
 	[self.roomView.book addTarget:self action:@selector(BookAction:) forControlEvents:UIControlEventTouchUpInside];
     //  设置

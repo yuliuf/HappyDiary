@@ -52,7 +52,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-
+    [self hiddenBackButton:YES];
+    
     //  设置代理
     self.detailHourglassView.tableView.delegate = self;
     self.detailHourglassView.tableView.dataSource = self;

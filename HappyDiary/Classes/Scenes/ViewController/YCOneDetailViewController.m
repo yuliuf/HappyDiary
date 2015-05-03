@@ -39,7 +39,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
+    [self hiddenBackButton:YES];
+    
     self.imagePath = self.aloneModel.backGroundImage;
     self.oneDetailView.userInteractionEnabled = NO;
     

@@ -35,6 +35,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self hiddenBackButton:YES];
 	[self.lockView.lockImageView addTarget:self action:@selector(lockAction:) forControlEvents:UIControlEventTouchUpInside];
     [self.lockView.tap addTarget:self action:@selector(tapAction:)];
 }

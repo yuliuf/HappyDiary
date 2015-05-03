@@ -8,9 +8,7 @@
 
 #import "lxySettingViewController.h"
 #import "lxySettingView.h"
-//#import "lxyDataBase.h"   X
 #import "lxyUserTableModel.h"
-
 #import "lxyIntroduceViewController.h"
 
 #define alerViewTag 200

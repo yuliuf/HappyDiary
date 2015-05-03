@@ -42,12 +42,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [self hiddenBackButton:YES];
     
     //view上轻怕事件的代理
     [_weeklyDetailView.tap addTarget:self action:@selector(tapAction:)];
-    
-    
-    
 }
 
 //view上轻怕事件的监听方法

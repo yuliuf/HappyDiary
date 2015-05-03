@@ -44,6 +44,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [self hiddenBackButton:YES];
     
     //  读取数据
     //[self loadData];

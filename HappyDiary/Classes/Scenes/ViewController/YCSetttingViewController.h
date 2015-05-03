@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface YCSetttingViewController : UIViewController
+@interface YCSetttingViewController : LYBaseViewController
 
 @end

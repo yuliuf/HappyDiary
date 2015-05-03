@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 @class lxyAlonePersonModel;
 
-@interface YCOneDetailViewController : UIViewController
+@interface YCOneDetailViewController : LYBaseViewController
 @property (nonatomic, strong) lxyAlonePersonModel *aloneModel;
 @end

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @class YCWeeklyDetailView;
 
-@interface YCWeeklyDetailViewController : UIViewController
+@interface YCWeeklyDetailViewController : LYBaseViewController
 
 @property (nonatomic ,strong) YCWeeklyDetailView *weeklyDetailView;
 
